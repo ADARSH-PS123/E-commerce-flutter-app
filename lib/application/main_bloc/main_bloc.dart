@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:ecommerce/domain/Iauth/Iauth.dart';
 import 'package:ecommerce/domain/Iauth/user.dart';
 import 'package:ecommerce/domain/iapp/iapp.dart';
@@ -21,14 +22,22 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     on<_GetUserEvent>((event, emit) async {
       emit(const MainState.loading());
 
-      final result = await _auth.getSignedUser();
-      final output = result.fold(() {
+      /*     final output = result.fold(() {
         return const MainState.notAuthenticated();
       }, (AppUser user) {
         return MainState.authenticated(user);
-      });
-
-      emit(output);
+      }); */
+      await emit.forEach(
+        _auth.getSignedUser(),
+        onData: (Option<AppUser> data) {
+        return  data.fold(() {
+            return const MainState.notAuthenticated();
+          }, (user) {
+            return MainState.authenticated(user);
+          });
+        },
+        onError: (error, stackTrace) => const MainState.offline(),
+      );
     });
 
 // app will show no internet screen automatically when there is no internet connection
@@ -36,7 +45,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     internetSubscription = _appRepo.isOnline().listen(
       (status) {
         if (status == InternetConnectionStatus.connected) {
-          print('calling 888888888888');
+ 
           add(const MainEvent.getUser());
         } else {
           add(const MainEvent.offlineEmitter());

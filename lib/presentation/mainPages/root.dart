@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
 
   HomePage({Key? key}) : super(key: key);
-final pages = [Home(),const Favourites(),const MyAccount(), Cart()];
+final pages = [Home(),const Favourites(),const MyAccount(), const Cart()];
   @override
   Widget build(BuildContext context) {
        Future<bool> showExitPopup() async {
@@ -23,19 +23,19 @@ final pages = [Home(),const Favourites(),const MyAccount(), Cart()];
         //the return value will be from "Yes" or "No" options
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Exit App'),
-          content: Text('Do you want to exit an App?'),
+          title: const Text('Exit App'),
+          content: const Text('Do you want to exit an App?'),
           actions:[
             ElevatedButton(
               onPressed: () => Navigator.of(context).pop(false),
                //return false when click on "NO"
-              child:Text('No'),
+              child:const Text('No'),
             ),
 
             ElevatedButton(
               onPressed: () => Navigator.of(context).pop(true), 
               //return true when click on "Yes"
-              child:Text('Yes'),
+              child:const Text('Yes'),
             ),
 
           ],

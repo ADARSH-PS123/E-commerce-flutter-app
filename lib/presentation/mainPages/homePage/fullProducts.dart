@@ -19,7 +19,7 @@ class FullProducts extends StatelessWidget {
     return Scaffold(
         backgroundColor: appBackgroundColor,
         body: CustomScrollView(
-            /*   physics: const NeverScrollableScrollPhysics(), */
+  
             slivers: [
               const SliverAppBar(
                 floating: false,

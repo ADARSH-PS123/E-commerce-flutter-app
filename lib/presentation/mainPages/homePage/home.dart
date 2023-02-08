@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:ecommerce/application/main_bloc/main_bloc.dart';
 import 'package:ecommerce/application/productBloc/product_bloc_bloc.dart';
 import 'package:ecommerce/core/colors.dart';
+import 'package:ecommerce/domain/core/di/configInjection.dart';
 import 'package:ecommerce/infrastructure/core/debouncer.dart';
 import 'package:ecommerce/presentation/Widgets/loadingPage.dart';
 import 'package:ecommerce/presentation/Widgets/noResultPage.dart';
@@ -16,10 +19,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
   final _debouncer = Debouncer(milliseconds: 700);
-  @override
+  
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  @override
   Widget build(BuildContext context) {
+
     return BlocListener<MainBloc, MainState>(
       listener: (context, state) {
         //when user press signout button
@@ -35,8 +40,7 @@ class Home extends StatelessWidget {
       },
       child: BlocBuilder<ProductWatcherBloc, ProductWatcherState>(
         builder: (context, state) {
-          print('buildong --------------');
-
+       
           return SafeArea(
             child: Scaffold(
               resizeToAvoidBottomInset: false,

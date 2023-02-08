@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce/domain/Iauth/user.dart';
 import 'package:ecommerce/domain/core/Failures/appFailure.dart';
-import 'package:ecommerce/domain/core/Failures/authfailures.dart';
+
 import 'package:ecommerce/domain/core/valueobject/valueobject.dart';
 import 'package:ecommerce/domain/iapp/cartEntity.dart';
 import 'package:ecommerce/domain/iapp/productEntity.dart';
@@ -24,7 +24,7 @@ abstract class IAppRepo {
 
 
   Stream<Either<AppFailure, List<Product>>> getProducts();
-  Future<void> setup();
+ 
   Future<Either<AppFailure, List<Product>>> getFavouriteProducts(
       {required UniqueId userId, required String collectionName});
   Future<Either<AppFailure, Unit>> setFavouriteProducts(
@@ -50,4 +50,7 @@ abstract class IAppRepo {
       {required UniqueId appUserId,
       required UniqueId productId,
      });
+ 
+
+     
 }

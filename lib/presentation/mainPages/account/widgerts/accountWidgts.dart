@@ -51,12 +51,18 @@ Widget profileStack(
                       const Padding(
                           padding: EdgeInsets.only(right: 19),
                           child: Icon(Icons.location_on)),
-                      Flexible(child: Text('Address : $address', maxLines: 2)),
+                      Flexible(child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Address : $address', maxLines: 2),
+                          Text('Pincode : $pincode', maxLines: 1),
+                        ],
+                      )),
                       
                     ],
                   ),
                 ),
-                  Flexible(child: Text('Pincode : $pincode', maxLines: 1))
+                  
               ],
             )
           ],

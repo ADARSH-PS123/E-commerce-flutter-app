@@ -10,6 +10,9 @@ class EditUserState with _$EditUserState {
       required Option<Either<AppFailure, Unit>> optionSuccessFailure,
       required bool isLoading,
       required bool isError}) = _EditUserState;
+
+
+      
   factory EditUserState.initial() {
     return EditUserState(
         user: AppUser.empty(),

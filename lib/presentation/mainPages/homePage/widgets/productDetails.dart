@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce/application/CartBloc/cart_bloc.dart';
 import 'package:ecommerce/application/favouritesBloc/favourites_bloc.dart';
@@ -21,7 +22,7 @@ class ProductDetails extends StatelessWidget {
     return Scaffold(
       backgroundColor: appBackgroundColor,
       appBar: topBar(
-        showAlertDialog: false,
+          showAlertDialog: false,
           title: "",
           trailing: BlocConsumer<FavouritesBloc, FavouritesState>(
             listener: (context, state) {
@@ -66,33 +67,32 @@ class ProductDetails extends StatelessWidget {
                       height: 260,
                       child: Column(
                         children: [
-                          Hero(
-                            tag: product.id,
-                            child: CarouselSlider.builder(
-                              options: CarouselOptions(
-                                  enableInfiniteScroll: false,
-                                  onPageChanged: ((index, reason) =>
-                                      pageNoNotifier.value = index),
-                                  aspectRatio: 2 / 1.5,
-                                  viewportFraction: .6,
-                                  height: 230,
-                                  enlargeCenterPage: true,
-                                  enlargeStrategy:
-                                      CenterPageEnlargeStrategy.height),
-                              itemCount: product.productPhotos.length,
-                              itemBuilder: (BuildContext context, int itemIndex,
-                                      int pageViewIndex) =>
-                                  Image.network(
-                                product.productPhotos[pageViewIndex]
-                                    .getOrCrash(),
-                                fit: BoxFit.cover,
-                              )
-                              /*    Image.asset(
-                                product.productPhotos[pageViewIndex].getOrCrash(),
-                                fit: BoxFit.cover,
-                              ) */
-                              ,
-                            ),
+                          CarouselSlider.builder(
+                            options: CarouselOptions(
+                                enableInfiniteScroll: false,
+                                onPageChanged: ((index, reason) =>
+                                    pageNoNotifier.value = index),
+                                aspectRatio: 2 / 1.5,
+                                viewportFraction: .6,
+                                height: 230,
+                                enlargeCenterPage: true,
+                                enlargeStrategy:
+                                    CenterPageEnlargeStrategy.height),
+                            itemCount: product.productPhotos.length,
+                            itemBuilder: (BuildContext context, int itemIndex,
+                                    int pageViewIndex) =>
+                                CachedNetworkImage(
+                              imageUrl: product.productPhotos[pageViewIndex]
+                                  .getOrCrash(),
+                              fit: BoxFit.cover,
+                              errorWidget: (context, url, error) =>
+                                  const Center(child: Text("Couldn't load image")),
+                            )
+                            /*    Image.asset(
+                              product.productPhotos[pageViewIndex].getOrCrash(),
+                              fit: BoxFit.cover,
+                            ) */
+                            ,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 7),
@@ -188,19 +188,21 @@ class ProductDetails extends StatelessWidget {
           return appFloatingActionButton(
               context: context,
               price: product.price.getOrCrash().toString(),
-              buttonName: state.cartProducts.map((cart) => cart.product).contains(product)
+              buttonName: state.cartProducts
+                      .map((cart) => cart.product)
+                      .contains(product)
                   ? "Go to basket"
                   : 'Add to basket',
               onTap: () {
-                if (state.cartProducts.map((cart) => cart.product).contains(product)) {
+                if (state.cartProducts
+                    .map((cart) => cart.product)
+                    .contains(product)) {
                   Navigator.pop(context);
                   indexNotifier.value = 3;
+                } else {
+                  BlocProvider.of<CartBloc>(context)
+                      .add(CartEvent.setCartProducts(product.id));
                 }
-                else{
-                    BlocProvider.of<CartBloc>(context)
-                    .add(CartEvent.setCartProducts(product.id));
-                }
-              
               },
               BackgroundColor: whiteColor);
         },

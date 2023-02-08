@@ -13,7 +13,7 @@ abstract class Iauth{
    Future<Either<Failure,Unit>>loginWithEmailAndPass({
     required EmailAddress email,required Password password
   });
-  Future<Option<AppUser>> getSignedUser(
+  Stream<Option<AppUser>> getSignedUser(
 
   );
   Future<void> SignOut();

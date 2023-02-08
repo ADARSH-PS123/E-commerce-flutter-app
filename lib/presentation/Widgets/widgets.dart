@@ -82,6 +82,63 @@ PreferredSize topBar(
     ),
   );
 }
+Widget tBar(
+    {required String title,
+    required Widget trailing,
+  required  bool showAlertDialog,
+    required BuildContext context,
+    bool showLeading = true}) {
+  return SizedBox(
+height: 80,
+    child: Padding(
+      padding: const EdgeInsets.only(top: 25, right: 0),
+      child: AppBar(
+        elevation: 0,
+        backgroundColor: appBackgroundColor,
+        leading: showLeading
+            ? GestureDetector(
+                onTap: () {
+                  showAlertDialog ==true?
+                  showDialog(
+                      context: context,
+                      builder: (builder) {
+                        return AlertDialog(
+                          title: const Text('Do you want to exit ?'),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context, false);
+                                },
+                                child: const Text('No')),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context, true);
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('Yes '))
+                          ],
+                        );
+                      }):Navigator.of(context).pop();
+                },
+                child: const Icon(
+                  Icons.navigate_before,
+                  color: balckColor,
+                ))
+            : const SizedBox(),
+        title: Text(title),
+        centerTitle: true,
+        titleTextStyle: const TextStyle(
+            color: balckColor, fontWeight: FontWeight.bold, fontSize: 18),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: trailing,
+          )
+        ],
+      ),
+    ),
+  );
+}
 
 Widget appFloatingActionButton(
     {required BuildContext context,

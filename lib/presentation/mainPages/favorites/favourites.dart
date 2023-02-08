@@ -53,6 +53,7 @@ class Favourites extends StatelessWidget {
       child: BlocBuilder<FavouritesBloc, FavouritesState>(
         builder: (context, state) {
           return Scaffold(
+            
             backgroundColor: appBackgroundColor,
             appBar: topBar(
                 showAlertDialog: false,

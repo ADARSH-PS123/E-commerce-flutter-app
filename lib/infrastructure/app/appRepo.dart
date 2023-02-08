@@ -1,5 +1,6 @@
 import 'dart:async';
-import 'dart:convert';
+import 'dart:developer';
+
 
 import 'dart:io';
 
@@ -13,10 +14,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce/domain/iapp/cartEntity.dart';
 import 'package:ecommerce/domain/iapp/iapp.dart';
 import 'package:ecommerce/domain/iapp/productEntity.dart';
-import 'package:ecommerce/infrastructure/app/cartDto.dart';
+
 import 'package:ecommerce/infrastructure/app/productDto.dart';
 import 'package:ecommerce/infrastructure/app/userdto.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:image_picker/image_picker.dart';
@@ -300,6 +301,7 @@ class AppRepo implements IAppRepo {
   @override
   Future<Either<AppFailure, List<Cart>>> getCartProduct(
       {required UniqueId userId}) async {
+      
     try {
       final cartCollection = await _firestore
           .collection('User')

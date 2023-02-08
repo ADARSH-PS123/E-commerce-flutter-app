@@ -5,7 +5,7 @@ import 'package:ecommerce/domain/iapp/productEntity.dart';
 import 'package:ecommerce/presentation/mainPages/homePage/widgets/productDetails.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/widgets.dart';
+
 
 class TabBarItem extends StatelessWidget {
   final List<Product> products;
@@ -18,7 +18,7 @@ class TabBarItem extends StatelessWidget {
       child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => Padding(
-                padding: EdgeInsets.only(left: 30),
+                padding: const EdgeInsets.only(left: 30),
                 child: InkWell(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
@@ -34,8 +34,8 @@ class TabBarItem extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                               color: whiteColor,
-                              boxShadow: [
-                                BoxShadow(color: greyColor, blurRadius: 35)
+                              boxShadow:const [
+                                 BoxShadow(color: greyColor, blurRadius: 35)
                               ],
                               borderRadius: BorderRadius.circular(20)),
                           width: 220,

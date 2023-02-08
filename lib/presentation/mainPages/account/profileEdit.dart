@@ -213,7 +213,7 @@ class EditWidget extends StatelessWidget {
               ),
             ),
 
-            //name edit section
+            // edit section 2
             Container(
               height: 350,
               color: appBackgroundColor,
@@ -288,8 +288,10 @@ class EditWidget extends StatelessWidget {
                             .value
                             .fold(
                                 (l) => l.maybeMap(
+                                  nullField: (value) => 'Invalid Pincode',
                                     invalidPincode: (value) =>
                                         "Invalid Pincode",
+                                        
                                     orElse: () => null),
                                 (r) => null);
                       },

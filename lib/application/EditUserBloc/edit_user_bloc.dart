@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce/application/main_bloc/main_bloc.dart';
 import 'package:ecommerce/domain/Iauth/Iauth.dart';
 import 'package:ecommerce/domain/Iauth/address.dart';
 import 'package:ecommerce/domain/Iauth/user.dart';
@@ -9,16 +10,17 @@ import 'package:ecommerce/domain/core/valueobject/valueobject.dart';
 import 'package:ecommerce/domain/iapp/iapp.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
+
 part 'edit_user_bloc.freezed.dart';
 part 'edit_user_event.dart';
 part 'edit_user_state.dart';
 
 @injectable
 class EditUserBloc extends Bloc<EditUserEvent, EditUserState> {
-  final Iauth _iauth;
+
   final IAppRepo _iAppRepo;
-  EditUserBloc(this._iauth, this._iAppRepo) : super(EditUserState.initial()) {
+final Iauth _iauth;
+  EditUserBloc( this._iAppRepo,this._iauth) : super(EditUserState.initial()) {
     on<EditUserEvent>((event, emit) async {
       if (event is _EditUserEventUserNameChanged) {
         final userName = UserName(event.userName);
@@ -29,21 +31,30 @@ class EditUserBloc extends Bloc<EditUserEvent, EditUserState> {
       } else if (event is _EditUserEventUserPincodeChanged) {
         emit(state.copyWith(pincode: PinCode(event.pincode)));
       } else if (event is _EditUserEventGetSignedUser) {
-        emit(state.copyWith(isLoading: true));
-        final data = await _iauth.getSignedUser();
-        final out = data.fold(
-            () => state.copyWith(
+         emit(state.copyWith(isLoading: true));
+  await emit.forEach(
+          _iauth.getSignedUser(),
+          onData: (Option<AppUser> data) {
+            return data.fold(
+                () => state.copyWith(
                 isLoading: false,
                 optionSuccessFailure:
                     const Some(Left(AppFailure.insufficientPermissions())),
                 isError: true),
-            (user) => state.copyWith(
+                (user) =>  state.copyWith(
                 isLoading: false,
                 user: user,
                 pincode: user.fullAddress.pincode,
                 userAddress: user.fullAddress.userAddress,
                 userName: user.userName));
-        emit(out);
+          },
+        );
+
+      
+
+
+
+
       } else if (event is _EditUserEventEditUserInfo) {
         emit(state.copyWith(isLoading: true));
         final appUser = AppUser(

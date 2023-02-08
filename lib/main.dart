@@ -1,10 +1,13 @@
 import 'package:ecommerce/application/CartBloc/cart_bloc.dart';
 import 'package:ecommerce/application/EditUserBloc/edit_user_bloc.dart';
 
-import 'package:ecommerce/application/authBloc/auth_bloc.dart';
+
+import 'package:ecommerce/application/blocObserver.dart';
 import 'package:ecommerce/application/favouritesBloc/favourites_bloc.dart';
 import 'package:ecommerce/application/main_bloc/main_bloc.dart';
 import 'package:ecommerce/application/productBloc/product_bloc_bloc.dart';
+import 'package:ecommerce/core/colors.dart';
+import 'package:ecommerce/core/constants.dart';
 import 'package:ecommerce/presentation/Widgets/loadingPage.dart';
 import 'package:ecommerce/presentation/launcherPage/launcherPage.dart';
 import 'package:ecommerce/presentation/logInReg/loginPage.dart';
@@ -17,6 +20,7 @@ import 'package:ecommerce/presentation/mainPages/root.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,8 +29,13 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  Stripe.publishableKey = publishableKey;
+Stripe.instance.applySettings();
+
   await Firebase.initializeApp();
   await configInjection();
+  Bloc.observer =AppBlocObserver();
   runApp(const MainApp());
 }
 
@@ -37,10 +46,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => getIt<AuthBloc>()),
-        BlocProvider(
-            create: (context) => getIt<ProductWatcherBloc>()
-              ..add(const ProductWacherEvent.getAllProducts())),
+   
+   BlocProvider(create:(context) => getIt<ProductWatcherBloc>()..add(ProductWacherEvent.getAllProducts()),),
         BlocProvider(
             create: ((context) => getIt<
                 MainBloc>() /* ..add(const MainEvent.onlinewatcher()) */)),
@@ -67,11 +74,17 @@ class MainApp extends StatelessWidget {
             'passwordreset': (context) => const PasswordResetScreen(),
             'editProfile': (context) => const EditProfile(),
           },
-          theme: ThemeData(textTheme: GoogleFonts.ralewayTextTheme()),
+          theme: ThemeData(textTheme: GoogleFonts.ralewayTextTheme(),
+              colorScheme: ColorScheme.fromSwatch(
+        accentColor:appBackgroundColor, // but now it should be declared like this
+      ),
+          
+          ),
           debugShowCheckedModeBanner: false,
           home: SafeArea(
               child: BlocListener<MainBloc, MainState>(
             listener: (context, state) {
+        
               state.maybeMap(
                 orElse: () {},
                 notAuthenticated: (value) {

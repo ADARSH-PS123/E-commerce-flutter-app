@@ -97,5 +97,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(state.copyWith(isMatched: false));
       }
     });
+    
   }
+  @override
+  Future<void> close() {
+  print("onclose callsed");
+    return super.close();
+  }
+  
 }

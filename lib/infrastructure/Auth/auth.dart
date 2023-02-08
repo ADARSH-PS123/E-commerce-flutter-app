@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dartz/dartz_streaming.dart';
 import 'package:ecommerce/domain/Iauth/Iauth.dart';
@@ -108,12 +110,11 @@ await _firebaseAuth.signOut();
   }
 
   @override
-  Future<Option<AppUser>> getSignedUser() async {
-    final User? user = _firebaseAuth.currentUser;
-
+  Stream<Option<AppUser>> getSignedUser() async* {
+    final User? user =  _firebaseAuth.currentUser;
     if (user == null) {
  
-      return none();
+      yield none();
     } else {
 
       try {
@@ -126,9 +127,9 @@ await _firebaseAuth.signOut();
               return
                AppUserDto.fromJson(r.data() as Map<String, dynamic>);});
              
-        return Some(userDto.toDomain());
+        yield Some(userDto.toDomain());
       } catch (E) {
-        return none();
+        yield none();
       }
     }
     /*  return Some(AppUser(

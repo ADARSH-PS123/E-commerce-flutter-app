@@ -1,13 +1,13 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce/core/colors.dart';
+
+
 import 'package:ecommerce/core/fonts.dart';
-import 'package:ecommerce/core/spacers.dart';
+
 import 'package:ecommerce/domain/iapp/productEntity.dart';
 import 'package:ecommerce/presentation/Widgets/productTile.dart';
 import 'package:ecommerce/presentation/mainPages/homePage/widgets/productDetails.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 // When user search this page will show the result
