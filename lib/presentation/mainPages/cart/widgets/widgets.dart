@@ -30,7 +30,7 @@ class CartTile extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(color: whiteColor, borderRadius: borderRadius),
       padding: const EdgeInsets.all(15),
-      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
       child: Row(
         children: [
           CachedNetworkImage(
@@ -76,16 +76,19 @@ class CartTile extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      const Text(
-                        "Quantity : ",
-                        style: TextStyle(fontSize: 14),
+                      Expanded(
+                        
+                        child: const Text(
+                          "Quantity :",overflow: TextOverflow.fade,
+                          style: TextStyle(fontSize: 14),
+                        ),
                       ),
                       Material(
                         color: whiteColor,
                         child: IconButton(
                           disabledColor: whiteColor,
                           splashColor: blueBackgroundColor,
-                          splashRadius: 20,
+                      
                           onPressed: decriment,
                           icon: quantity > 1
                               ? const Icon(
@@ -96,7 +99,8 @@ class CartTile extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        quantity.toString(),
+                        
+                        quantity.toString(),overflow: TextOverflow.fade,
                         style: const TextStyle(fontSize: 12),
                       ),
                       Material(
@@ -104,7 +108,7 @@ class CartTile extends StatelessWidget {
                         child: IconButton(
                           disabledColor: whiteColor,
                           splashColor: blueBackgroundColor,
-                          splashRadius: 20,
+                          
                           icon: const Icon(Icons.add_circle),
                           onPressed: incrimement,
                           color: skyBlue,

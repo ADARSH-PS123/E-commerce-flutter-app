@@ -12,6 +12,7 @@ PreferredSize homeAppBar(BuildContext context ,GlobalKey<ScaffoldState> _scaffol
         child: AppBar(
           backgroundColor: appBackgroundColor,
           shadowColor: Colors.transparent,
+          elevation: 0,
           leading: IconButton(
             icon: const ImageIcon(
               AssetImage('assets/images/menu-bar.png'),

@@ -68,7 +68,9 @@ class MyAccount extends StatelessWidget {
                         Navigator.of(context).pushNamed('editProfile');
                       }),
                   profileTiles(optionName: "Shopping address", onTap: () {}),
-                  profileTiles(optionName: "Order history", onTap: () {}),
+                  profileTiles(optionName: "Order history", onTap: () {
+                    Navigator.of(context).pushNamed('orderhistory');
+                  }),
                   profileTiles(optionName: "Cards", onTap: () {}),
                   profileTiles(optionName: "Notifications", onTap: () {}),
                 ],

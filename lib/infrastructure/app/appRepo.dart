@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-
 import 'dart:io';
 
 import 'package:ecommerce/domain/Iauth/address.dart';
@@ -61,12 +60,15 @@ class AppRepo implements IAppRepo {
   }
 
   @override
-  Future<Either<AppFailure,Unit>> editUserData({required AppUser user}) async {
+  Future<Either<AppFailure, Unit>> editUserData({required AppUser user}) async {
     try {
-      await _firestore.collection('User').doc(user.id.getOrCrash()).set(AppUserDto.fromDomain(user).toJson());
+      await _firestore
+          .collection('User')
+          .doc(user.id.getOrCrash())
+          .set(AppUserDto.fromDomain(user).toJson());
       return const Right(unit);
     } catch (e) {
-      print(e.toString()+"---------------------888");
+      print(e.toString() + "---------------------888");
       return const Left(AppFailure.unexpected());
     }
   }
@@ -152,7 +154,6 @@ class AppRepo implements IAppRepo {
 
       yield* data;
     } catch (e) {
-  
       yield const Left(AppFailure.unableToUpdate());
     }
   }
@@ -301,13 +302,12 @@ class AppRepo implements IAppRepo {
   @override
   Future<Either<AppFailure, List<Cart>>> getCartProduct(
       {required UniqueId userId}) async {
-      
     try {
       final cartCollection = await _firestore
           .collection('User')
           .doc(userId.getOrCrash())
           .collection('Cart')
-          .orderBy('quantity',descending: true)
+          .orderBy('quantity', descending: true)
           .get();
       if (cartCollection.size == 0) {
         return const Right([]);
@@ -350,6 +350,80 @@ class AppRepo implements IAppRepo {
     } catch (e) {
       print(e.toString() + "catch block set cart============");
       return const Left(AppFailure.unableToUpdate());
+    }
+  }
+
+  @override
+  Future<Either<AppFailure, List<Cart>>> getOrderHistoryProduct(
+      {required UniqueId userId}) async{
+   try{
+      final cartCollection = await _firestore
+          .collection('User')
+          .doc(userId.getOrCrash())
+          .collection('OrderHistory')
+          .get();
+             if (cartCollection.size == 0) {
+        return const Right([]);
+      } else {
+        final cartLs = await Future.wait(cartCollection.docs.map((e) async {
+          final productDoc = await _firestore.doc(e.data()['productRef']).get();
+          final product =
+              ProductDto.fromJson(productDoc.data() as Map<String, dynamic>)
+                  .toDomain();
+          CountValueObject quantity;
+          if (e.data().keys.contains('quantity')) {
+            quantity = CountValueObject(e.data()['quantity']);
+          } else {
+            quantity = CountValueObject(0);
+          }
+          return Cart(quantity: quantity, product: product);
+        }).toList());
+
+        return Right(cartLs);
+      }
+    } catch (e) {
+      return const Left(AppFailure.insufficientPermissions());
+    }
+   }
+  
+  
+
+  @override
+  Future<Either<AppFailure, Unit>> moveCartProductsToOrderHistory(
+      {required UniqueId appUserId}) async {
+    try {
+      WriteBatch writeBatch = _firestore.batch();
+      final cartCollection = await _firestore
+          .collection('User')
+          .doc(appUserId.getOrCrash())
+          .collection('Cart')
+          .get();
+      cartCollection.docs.forEach(
+        (docSnap) {
+          writeBatch.set(
+              _firestore
+                  .collection('User')
+                  .doc(appUserId.getOrCrash())
+                  .collection('OrderHistory')
+                  .doc(docSnap.id),
+              docSnap.data());
+            writeBatch.delete(
+              _firestore
+                  .collection('User')
+                  .doc(appUserId.getOrCrash())
+                  .collection('Cart')
+                  .doc(docSnap.id),
+             );
+        },
+      );
+      await writeBatch.commit();
+      
+
+      log('-------------------------');
+
+      return const Right(unit);
+    } catch (e) {
+      return const Left(AppFailure.insufficientPermissions());
     }
   }
 }

@@ -11,4 +11,5 @@ class CartEvent with _$CartEvent {
   const factory CartEvent.changeQuantity(
           UniqueId productId, CountValueObject quantity) =
       _CartEventCahngeQuantityCart;
+        const factory CartEvent.moveCartProdutToOrderHistory() = _CartEventmoveCartProdutToOrderHistory;
 }

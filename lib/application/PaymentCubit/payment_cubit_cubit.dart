@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce/domain/core/Failures/paymentFailure.dart';
-import 'package:ecommerce/domain/iPaymentRepo/iPaymentRepo.dart';
+import 'package:ecommerce/domain/iPaymentNotificationRepo/iPaymentNotificationRepo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

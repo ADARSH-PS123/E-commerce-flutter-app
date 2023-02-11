@@ -99,10 +99,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
     
   }
-  @override
-  Future<void> close() {
-  print("onclose callsed");
-    return super.close();
-  }
+ 
   
 }

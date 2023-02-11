@@ -1,8 +1,10 @@
 import 'dart:developer';
 
 import 'package:ecommerce/application/CartBloc/cart_bloc.dart';
+import 'package:ecommerce/application/NotificationCubit/notication_cubit.dart';
 import 'package:ecommerce/application/PaymentCubit/payment_cubit_cubit.dart';
 import 'package:ecommerce/application/main_bloc/main_bloc.dart';
+import 'package:ecommerce/application/orderCubit/order_cubit.dart';
 import 'package:ecommerce/core/colors.dart';
 import 'package:ecommerce/core/fonts.dart';
 import 'package:ecommerce/core/spacers.dart';
@@ -10,10 +12,12 @@ import 'package:ecommerce/domain/core/di/configInjection.dart';
 import 'package:ecommerce/domain/core/valueobject/valueobject.dart';
 
 import 'package:ecommerce/presentation/Widgets/loadingPage.dart';
+import 'package:ecommerce/presentation/Widgets/noResultPage.dart';
 import 'package:ecommerce/presentation/Widgets/widgets.dart';
 
 import 'package:ecommerce/presentation/mainPages/cart/widgets/widgets.dart';
 import 'package:ecommerce/presentation/mainPages/homePage/widgets/productDetails.dart';
+import 'package:ecommerce/presentation/mainPages/root.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:collection/collection.dart';
@@ -23,9 +27,15 @@ class Cart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
     //APP BAR ,  zLISTVIEW  ,FLOATING ACTION BUTTON
-    return BlocProvider(
-      create: (context) => getIt<PaymentCubitCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<PaymentCubitCubit>(),
+        ),
+      
+      ],
       child: MultiBlocListener(
         listeners: [
           BlocListener<MainBloc, MainState>(
@@ -54,18 +64,29 @@ class Cart extends StatelessWidget {
                           unableToUpdate: (value) =>
                               ShowSnakBar.snakbar('Unable to update', context),
                         ),
-                    (r) => null));
+                    (r)=>null));
+                    if(state.isProductsMovedtoHistory){
+                      Navigator.pushNamed(context, 'orderhistory');
+           log('naviii');
+                    }
           }),
           BlocListener<PaymentCubitCubit, PaymentCubitState>(
             listener: (context, state) {
               state.maybeMap(
                 orElse: () {},
-                success: (s) => ShowSnakBar.snakbar('Order Success', context),
-                failed: (value) =>
-                    ShowSnakBar.snakbar(value.toString(), context),
+                success: (s) {
+                  ShowSnakBar.snakbar('Order Success', context);
+                     BlocProvider.of<CartBloc>(context).add(const CartEvent.moveCartProdutToOrderHistory());
+                     BlocProvider.of<NoticationCubit>(context)
+                          .sendMessageToken();
+
+                } ,
+                failed: (value) => ShowSnakBar.snakbar(
+                    value.paymentFailure.errorMessage, context),
               );
             },
-          )
+          ),
+        
         ],
         child: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
@@ -82,17 +103,19 @@ class Cart extends StatelessWidget {
                 ),
               );
             }
+            if (state.cartProducts.isEmpty) {
+              return NoResultPage(
+                  onTap: () {
+                    indexNotifier.value = 0;
+                  },
+                  imagePath: 'assets/images/Sally.png',
+                  message: 'Hit the  button down below\nto Create an order',
+                  messageHead: "Empty Basket",
+                  buttonName: 'Start ordering',
+                  appBarName: '');
+            }
             return Scaffold(
                 backgroundColor: appBackgroundColor,
-                /* appBar: topBar(
-                    showAlertDialog: true,
-                    showLeading: false,
-                    title: 'Basket',
-                    trailing: const ImageIcon(
-                      AssetImage('assets/images/Delete.png'),
-                      color: redColor,
-                    ),
-                    context: context), */
                 floatingActionButtonLocation:
                     FloatingActionButtonLocation.centerDocked,
                 floatingActionButton: appFloatingActionButton(
@@ -100,7 +123,13 @@ class Cart extends StatelessWidget {
                     buttonName: 'Check out',
                     onTap: () {
                       BlocProvider.of<PaymentCubitCubit>(context)
-                          .startPayment();
+                          .startPayment();  
+                            /*  BlocProvider.of<NoticationCubit>(context)
+                          .sendMessageToken(); */
+                        
+                          
+                     
+                              
                     },
                     BackgroundColor: appBackgroundColor,
                     price: state.cartProducts
@@ -115,11 +144,14 @@ class Cart extends StatelessWidget {
                     child: Column(
                       children: [
                         /* const Text('Basket',style: TextStyle(
-                          fontSize: 16,fontWeight: bold
-                        ),), */
+                              fontSize: 16,fontWeight: bold
+                            ),), */
                         tBar(
-                          showLeading: false,
-                          title: "Basket", trailing: const SizedBox(), showAlertDialog: false, context: context),
+                            showLeading: false,
+                            title: "Basket",
+                            trailing: const SizedBox(),
+                            showAlertDialog: false,
+                            context: context),
                         ListView.builder(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
@@ -139,8 +171,8 @@ class Cart extends StatelessWidget {
                                     ? () {
                                         BlocProvider.of<CartBloc>(context).add(
                                             CartEvent.changeQuantity(
-                                                state.cartProducts[index].product
-                                                    .id,
+                                                state.cartProducts[index]
+                                                    .product.id,
                                                 CountValueObject(state
                                                         .cartProducts[index]
                                                         .quantity
@@ -157,9 +189,11 @@ class Cart extends StatelessWidget {
                                           .getOrElse(0)) {
                                     BlocProvider.of<CartBloc>(context).add(
                                         CartEvent.changeQuantity(
-                                            state.cartProducts[index].product.id,
+                                            state
+                                                .cartProducts[index].product.id,
                                             CountValueObject(state
-                                                    .cartProducts[index].quantity
+                                                    .cartProducts[index]
+                                                    .quantity
                                                     .getOrElse(0) +
                                                 1)));
                                     BlocProvider.of<CartBloc>(context)
@@ -171,8 +205,8 @@ class Cart extends StatelessWidget {
                                 },
                                 delete: () {
                                   BlocProvider.of<CartBloc>(context).add(
-                                      CartEvent.removeCart(
-                                          state.cartProducts[index].product.id));
+                                      CartEvent.removeCart(state
+                                          .cartProducts[index].product.id));
                                 },
                                 quantity: state.cartProducts[index].quantity
                                     .getOrElse(0),

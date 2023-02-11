@@ -50,6 +50,15 @@ abstract class IAppRepo {
       {required UniqueId appUserId,
       required UniqueId productId,
      });
+
+     Future<Either<AppFailure, Unit>> moveCartProductsToOrderHistory(
+      {required UniqueId appUserId,
+      
+     });
+        Future<Either<AppFailure, List<Cart>>> getOrderHistoryProduct({
+
+    required UniqueId userId,
+  });
  
 
      

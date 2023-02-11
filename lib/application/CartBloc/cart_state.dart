@@ -9,6 +9,7 @@ class CartState with _$CartState {
       required UniqueId userId,
       required bool miniLoading ,
       required bool isLoading,
+      required bool isProductsMovedtoHistory,
    required CountValueObject quantity,
       required Option<Either<AppFailure, Unit>> optionSuccessFailure,
       required bool isError}) = _CartState;
@@ -19,6 +20,6 @@ class CartState with _$CartState {
         userId: UniqueId.fromBackend(''),
         isLoading: false,
         optionSuccessFailure: none(),
-        isError: false);
+        isError: false, isProductsMovedtoHistory: false);
   }
 }

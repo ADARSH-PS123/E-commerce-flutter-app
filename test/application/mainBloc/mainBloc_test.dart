@@ -28,7 +28,7 @@ void main() {
         optionSuccessOrFailure: none(),
         isAuthenticated: false);
     final regStateLoaded = regStateLoading.copyWith(
-        isSubmitting: false, optionSuccessOrFailure: Some(Right(unit)));
+        isSubmitting: false, optionSuccessOrFailure: const Some(Right(unit)));
         final userRegistrationFailed = regStateLoading.copyWith(
             isAuthenticated: false,
             isError: true,
@@ -47,7 +47,7 @@ void main() {
       return AuthBloc(authMock);
     },
     act:(AuthBloc bloc) {
-      return bloc.add(AuthEvent.signinWithEmailansPassword());
+      return bloc.add(const AuthEvent.signinWithEmailansPassword());
     },
     expect: () => [
       regStateLoading,logInSuccess

@@ -24,6 +24,7 @@ mixin _$CartEvent {
     required TResult Function(UniqueId productId) removeCart,
     required TResult Function(UniqueId productId, CountValueObject quantity)
         changeQuantity,
+    required TResult Function() moveCartProdutToOrderHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$CartEvent {
     TResult? Function(UniqueId productId)? removeCart,
     TResult? Function(UniqueId productId, CountValueObject quantity)?
         changeQuantity,
+    TResult? Function()? moveCartProdutToOrderHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$CartEvent {
     TResult Function(UniqueId productId)? removeCart,
     TResult Function(UniqueId productId, CountValueObject quantity)?
         changeQuantity,
+    TResult Function()? moveCartProdutToOrderHistory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,8 @@ mixin _$CartEvent {
     required TResult Function(_CartEventRemoveCart value) removeCart,
     required TResult Function(_CartEventCahngeQuantityCart value)
         changeQuantity,
+    required TResult Function(_CartEventmoveCartProdutToOrderHistory value)
+        moveCartProdutToOrderHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,8 @@ mixin _$CartEvent {
     TResult? Function(_CartEventSetCart value)? setCartProducts,
     TResult? Function(_CartEventRemoveCart value)? removeCart,
     TResult? Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult? Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +80,8 @@ mixin _$CartEvent {
     TResult Function(_CartEventSetCart value)? setCartProducts,
     TResult Function(_CartEventRemoveCart value)? removeCart,
     TResult Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -139,6 +148,7 @@ class _$_CartEventGetUserId implements _CartEventGetUserId {
     required TResult Function(UniqueId productId) removeCart,
     required TResult Function(UniqueId productId, CountValueObject quantity)
         changeQuantity,
+    required TResult Function() moveCartProdutToOrderHistory,
   }) {
     return getUserId();
   }
@@ -152,6 +162,7 @@ class _$_CartEventGetUserId implements _CartEventGetUserId {
     TResult? Function(UniqueId productId)? removeCart,
     TResult? Function(UniqueId productId, CountValueObject quantity)?
         changeQuantity,
+    TResult? Function()? moveCartProdutToOrderHistory,
   }) {
     return getUserId?.call();
   }
@@ -165,6 +176,7 @@ class _$_CartEventGetUserId implements _CartEventGetUserId {
     TResult Function(UniqueId productId)? removeCart,
     TResult Function(UniqueId productId, CountValueObject quantity)?
         changeQuantity,
+    TResult Function()? moveCartProdutToOrderHistory,
     required TResult orElse(),
   }) {
     if (getUserId != null) {
@@ -182,6 +194,8 @@ class _$_CartEventGetUserId implements _CartEventGetUserId {
     required TResult Function(_CartEventRemoveCart value) removeCart,
     required TResult Function(_CartEventCahngeQuantityCart value)
         changeQuantity,
+    required TResult Function(_CartEventmoveCartProdutToOrderHistory value)
+        moveCartProdutToOrderHistory,
   }) {
     return getUserId(this);
   }
@@ -194,6 +208,8 @@ class _$_CartEventGetUserId implements _CartEventGetUserId {
     TResult? Function(_CartEventSetCart value)? setCartProducts,
     TResult? Function(_CartEventRemoveCart value)? removeCart,
     TResult? Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult? Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
   }) {
     return getUserId?.call(this);
   }
@@ -206,6 +222,8 @@ class _$_CartEventGetUserId implements _CartEventGetUserId {
     TResult Function(_CartEventSetCart value)? setCartProducts,
     TResult Function(_CartEventRemoveCart value)? removeCart,
     TResult Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
     required TResult orElse(),
   }) {
     if (getUserId != null) {
@@ -263,6 +281,7 @@ class _$_CartEventGetCart implements _CartEventGetCart {
     required TResult Function(UniqueId productId) removeCart,
     required TResult Function(UniqueId productId, CountValueObject quantity)
         changeQuantity,
+    required TResult Function() moveCartProdutToOrderHistory,
   }) {
     return getCArtProducts();
   }
@@ -276,6 +295,7 @@ class _$_CartEventGetCart implements _CartEventGetCart {
     TResult? Function(UniqueId productId)? removeCart,
     TResult? Function(UniqueId productId, CountValueObject quantity)?
         changeQuantity,
+    TResult? Function()? moveCartProdutToOrderHistory,
   }) {
     return getCArtProducts?.call();
   }
@@ -289,6 +309,7 @@ class _$_CartEventGetCart implements _CartEventGetCart {
     TResult Function(UniqueId productId)? removeCart,
     TResult Function(UniqueId productId, CountValueObject quantity)?
         changeQuantity,
+    TResult Function()? moveCartProdutToOrderHistory,
     required TResult orElse(),
   }) {
     if (getCArtProducts != null) {
@@ -306,6 +327,8 @@ class _$_CartEventGetCart implements _CartEventGetCart {
     required TResult Function(_CartEventRemoveCart value) removeCart,
     required TResult Function(_CartEventCahngeQuantityCart value)
         changeQuantity,
+    required TResult Function(_CartEventmoveCartProdutToOrderHistory value)
+        moveCartProdutToOrderHistory,
   }) {
     return getCArtProducts(this);
   }
@@ -318,6 +341,8 @@ class _$_CartEventGetCart implements _CartEventGetCart {
     TResult? Function(_CartEventSetCart value)? setCartProducts,
     TResult? Function(_CartEventRemoveCart value)? removeCart,
     TResult? Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult? Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
   }) {
     return getCArtProducts?.call(this);
   }
@@ -330,6 +355,8 @@ class _$_CartEventGetCart implements _CartEventGetCart {
     TResult Function(_CartEventSetCart value)? setCartProducts,
     TResult Function(_CartEventRemoveCart value)? removeCart,
     TResult Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
     required TResult orElse(),
   }) {
     if (getCArtProducts != null) {
@@ -414,6 +441,7 @@ class _$_CartEventSetCart implements _CartEventSetCart {
     required TResult Function(UniqueId productId) removeCart,
     required TResult Function(UniqueId productId, CountValueObject quantity)
         changeQuantity,
+    required TResult Function() moveCartProdutToOrderHistory,
   }) {
     return setCartProducts(productId);
   }
@@ -427,6 +455,7 @@ class _$_CartEventSetCart implements _CartEventSetCart {
     TResult? Function(UniqueId productId)? removeCart,
     TResult? Function(UniqueId productId, CountValueObject quantity)?
         changeQuantity,
+    TResult? Function()? moveCartProdutToOrderHistory,
   }) {
     return setCartProducts?.call(productId);
   }
@@ -440,6 +469,7 @@ class _$_CartEventSetCart implements _CartEventSetCart {
     TResult Function(UniqueId productId)? removeCart,
     TResult Function(UniqueId productId, CountValueObject quantity)?
         changeQuantity,
+    TResult Function()? moveCartProdutToOrderHistory,
     required TResult orElse(),
   }) {
     if (setCartProducts != null) {
@@ -457,6 +487,8 @@ class _$_CartEventSetCart implements _CartEventSetCart {
     required TResult Function(_CartEventRemoveCart value) removeCart,
     required TResult Function(_CartEventCahngeQuantityCart value)
         changeQuantity,
+    required TResult Function(_CartEventmoveCartProdutToOrderHistory value)
+        moveCartProdutToOrderHistory,
   }) {
     return setCartProducts(this);
   }
@@ -469,6 +501,8 @@ class _$_CartEventSetCart implements _CartEventSetCart {
     TResult? Function(_CartEventSetCart value)? setCartProducts,
     TResult? Function(_CartEventRemoveCart value)? removeCart,
     TResult? Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult? Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
   }) {
     return setCartProducts?.call(this);
   }
@@ -481,6 +515,8 @@ class _$_CartEventSetCart implements _CartEventSetCart {
     TResult Function(_CartEventSetCart value)? setCartProducts,
     TResult Function(_CartEventRemoveCart value)? removeCart,
     TResult Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
     required TResult orElse(),
   }) {
     if (setCartProducts != null) {
@@ -572,6 +608,7 @@ class _$_CartEventRemoveCart implements _CartEventRemoveCart {
     required TResult Function(UniqueId productId) removeCart,
     required TResult Function(UniqueId productId, CountValueObject quantity)
         changeQuantity,
+    required TResult Function() moveCartProdutToOrderHistory,
   }) {
     return removeCart(productId);
   }
@@ -585,6 +622,7 @@ class _$_CartEventRemoveCart implements _CartEventRemoveCart {
     TResult? Function(UniqueId productId)? removeCart,
     TResult? Function(UniqueId productId, CountValueObject quantity)?
         changeQuantity,
+    TResult? Function()? moveCartProdutToOrderHistory,
   }) {
     return removeCart?.call(productId);
   }
@@ -598,6 +636,7 @@ class _$_CartEventRemoveCart implements _CartEventRemoveCart {
     TResult Function(UniqueId productId)? removeCart,
     TResult Function(UniqueId productId, CountValueObject quantity)?
         changeQuantity,
+    TResult Function()? moveCartProdutToOrderHistory,
     required TResult orElse(),
   }) {
     if (removeCart != null) {
@@ -615,6 +654,8 @@ class _$_CartEventRemoveCart implements _CartEventRemoveCart {
     required TResult Function(_CartEventRemoveCart value) removeCart,
     required TResult Function(_CartEventCahngeQuantityCart value)
         changeQuantity,
+    required TResult Function(_CartEventmoveCartProdutToOrderHistory value)
+        moveCartProdutToOrderHistory,
   }) {
     return removeCart(this);
   }
@@ -627,6 +668,8 @@ class _$_CartEventRemoveCart implements _CartEventRemoveCart {
     TResult? Function(_CartEventSetCart value)? setCartProducts,
     TResult? Function(_CartEventRemoveCart value)? removeCart,
     TResult? Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult? Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
   }) {
     return removeCart?.call(this);
   }
@@ -639,6 +682,8 @@ class _$_CartEventRemoveCart implements _CartEventRemoveCart {
     TResult Function(_CartEventSetCart value)? setCartProducts,
     TResult Function(_CartEventRemoveCart value)? removeCart,
     TResult Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
     required TResult orElse(),
   }) {
     if (removeCart != null) {
@@ -741,6 +786,7 @@ class _$_CartEventCahngeQuantityCart implements _CartEventCahngeQuantityCart {
     required TResult Function(UniqueId productId) removeCart,
     required TResult Function(UniqueId productId, CountValueObject quantity)
         changeQuantity,
+    required TResult Function() moveCartProdutToOrderHistory,
   }) {
     return changeQuantity(productId, quantity);
   }
@@ -754,6 +800,7 @@ class _$_CartEventCahngeQuantityCart implements _CartEventCahngeQuantityCart {
     TResult? Function(UniqueId productId)? removeCart,
     TResult? Function(UniqueId productId, CountValueObject quantity)?
         changeQuantity,
+    TResult? Function()? moveCartProdutToOrderHistory,
   }) {
     return changeQuantity?.call(productId, quantity);
   }
@@ -767,6 +814,7 @@ class _$_CartEventCahngeQuantityCart implements _CartEventCahngeQuantityCart {
     TResult Function(UniqueId productId)? removeCart,
     TResult Function(UniqueId productId, CountValueObject quantity)?
         changeQuantity,
+    TResult Function()? moveCartProdutToOrderHistory,
     required TResult orElse(),
   }) {
     if (changeQuantity != null) {
@@ -784,6 +832,8 @@ class _$_CartEventCahngeQuantityCart implements _CartEventCahngeQuantityCart {
     required TResult Function(_CartEventRemoveCart value) removeCart,
     required TResult Function(_CartEventCahngeQuantityCart value)
         changeQuantity,
+    required TResult Function(_CartEventmoveCartProdutToOrderHistory value)
+        moveCartProdutToOrderHistory,
   }) {
     return changeQuantity(this);
   }
@@ -796,6 +846,8 @@ class _$_CartEventCahngeQuantityCart implements _CartEventCahngeQuantityCart {
     TResult? Function(_CartEventSetCart value)? setCartProducts,
     TResult? Function(_CartEventRemoveCart value)? removeCart,
     TResult? Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult? Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
   }) {
     return changeQuantity?.call(this);
   }
@@ -808,6 +860,8 @@ class _$_CartEventCahngeQuantityCart implements _CartEventCahngeQuantityCart {
     TResult Function(_CartEventSetCart value)? setCartProducts,
     TResult Function(_CartEventRemoveCart value)? removeCart,
     TResult Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
     required TResult orElse(),
   }) {
     if (changeQuantity != null) {
@@ -830,11 +884,151 @@ abstract class _CartEventCahngeQuantityCart implements CartEvent {
 }
 
 /// @nodoc
+abstract class _$$_CartEventmoveCartProdutToOrderHistoryCopyWith<$Res> {
+  factory _$$_CartEventmoveCartProdutToOrderHistoryCopyWith(
+          _$_CartEventmoveCartProdutToOrderHistory value,
+          $Res Function(_$_CartEventmoveCartProdutToOrderHistory) then) =
+      __$$_CartEventmoveCartProdutToOrderHistoryCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_CartEventmoveCartProdutToOrderHistoryCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res,
+        _$_CartEventmoveCartProdutToOrderHistory>
+    implements _$$_CartEventmoveCartProdutToOrderHistoryCopyWith<$Res> {
+  __$$_CartEventmoveCartProdutToOrderHistoryCopyWithImpl(
+      _$_CartEventmoveCartProdutToOrderHistory _value,
+      $Res Function(_$_CartEventmoveCartProdutToOrderHistory) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_CartEventmoveCartProdutToOrderHistory
+    implements _CartEventmoveCartProdutToOrderHistory {
+  const _$_CartEventmoveCartProdutToOrderHistory();
+
+  @override
+  String toString() {
+    return 'CartEvent.moveCartProdutToOrderHistory()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CartEventmoveCartProdutToOrderHistory);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getUserId,
+    required TResult Function() getCArtProducts,
+    required TResult Function(UniqueId productId) setCartProducts,
+    required TResult Function(UniqueId productId) removeCart,
+    required TResult Function(UniqueId productId, CountValueObject quantity)
+        changeQuantity,
+    required TResult Function() moveCartProdutToOrderHistory,
+  }) {
+    return moveCartProdutToOrderHistory();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getUserId,
+    TResult? Function()? getCArtProducts,
+    TResult? Function(UniqueId productId)? setCartProducts,
+    TResult? Function(UniqueId productId)? removeCart,
+    TResult? Function(UniqueId productId, CountValueObject quantity)?
+        changeQuantity,
+    TResult? Function()? moveCartProdutToOrderHistory,
+  }) {
+    return moveCartProdutToOrderHistory?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getUserId,
+    TResult Function()? getCArtProducts,
+    TResult Function(UniqueId productId)? setCartProducts,
+    TResult Function(UniqueId productId)? removeCart,
+    TResult Function(UniqueId productId, CountValueObject quantity)?
+        changeQuantity,
+    TResult Function()? moveCartProdutToOrderHistory,
+    required TResult orElse(),
+  }) {
+    if (moveCartProdutToOrderHistory != null) {
+      return moveCartProdutToOrderHistory();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CartEventGetUserId value) getUserId,
+    required TResult Function(_CartEventGetCart value) getCArtProducts,
+    required TResult Function(_CartEventSetCart value) setCartProducts,
+    required TResult Function(_CartEventRemoveCart value) removeCart,
+    required TResult Function(_CartEventCahngeQuantityCart value)
+        changeQuantity,
+    required TResult Function(_CartEventmoveCartProdutToOrderHistory value)
+        moveCartProdutToOrderHistory,
+  }) {
+    return moveCartProdutToOrderHistory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CartEventGetUserId value)? getUserId,
+    TResult? Function(_CartEventGetCart value)? getCArtProducts,
+    TResult? Function(_CartEventSetCart value)? setCartProducts,
+    TResult? Function(_CartEventRemoveCart value)? removeCart,
+    TResult? Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult? Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
+  }) {
+    return moveCartProdutToOrderHistory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CartEventGetUserId value)? getUserId,
+    TResult Function(_CartEventGetCart value)? getCArtProducts,
+    TResult Function(_CartEventSetCart value)? setCartProducts,
+    TResult Function(_CartEventRemoveCart value)? removeCart,
+    TResult Function(_CartEventCahngeQuantityCart value)? changeQuantity,
+    TResult Function(_CartEventmoveCartProdutToOrderHistory value)?
+        moveCartProdutToOrderHistory,
+    required TResult orElse(),
+  }) {
+    if (moveCartProdutToOrderHistory != null) {
+      return moveCartProdutToOrderHistory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CartEventmoveCartProdutToOrderHistory implements CartEvent {
+  const factory _CartEventmoveCartProdutToOrderHistory() =
+      _$_CartEventmoveCartProdutToOrderHistory;
+}
+
+/// @nodoc
 mixin _$CartState {
   List<Cart> get cartProducts => throw _privateConstructorUsedError;
   UniqueId get userId => throw _privateConstructorUsedError;
   bool get miniLoading => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isProductsMovedtoHistory => throw _privateConstructorUsedError;
   CountValueObject get quantity => throw _privateConstructorUsedError;
   Option<Either<AppFailure, Unit>> get optionSuccessFailure =>
       throw _privateConstructorUsedError;
@@ -855,6 +1049,7 @@ abstract class $CartStateCopyWith<$Res> {
       UniqueId userId,
       bool miniLoading,
       bool isLoading,
+      bool isProductsMovedtoHistory,
       CountValueObject quantity,
       Option<Either<AppFailure, Unit>> optionSuccessFailure,
       bool isError});
@@ -877,6 +1072,7 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
     Object? userId = null,
     Object? miniLoading = null,
     Object? isLoading = null,
+    Object? isProductsMovedtoHistory = null,
     Object? quantity = null,
     Object? optionSuccessFailure = null,
     Object? isError = null,
@@ -897,6 +1093,10 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isProductsMovedtoHistory: null == isProductsMovedtoHistory
+          ? _value.isProductsMovedtoHistory
+          : isProductsMovedtoHistory // ignore: cast_nullable_to_non_nullable
               as bool,
       quantity: null == quantity
           ? _value.quantity
@@ -926,6 +1126,7 @@ abstract class _$$_CartStateCopyWith<$Res> implements $CartStateCopyWith<$Res> {
       UniqueId userId,
       bool miniLoading,
       bool isLoading,
+      bool isProductsMovedtoHistory,
       CountValueObject quantity,
       Option<Either<AppFailure, Unit>> optionSuccessFailure,
       bool isError});
@@ -946,6 +1147,7 @@ class __$$_CartStateCopyWithImpl<$Res>
     Object? userId = null,
     Object? miniLoading = null,
     Object? isLoading = null,
+    Object? isProductsMovedtoHistory = null,
     Object? quantity = null,
     Object? optionSuccessFailure = null,
     Object? isError = null,
@@ -966,6 +1168,10 @@ class __$$_CartStateCopyWithImpl<$Res>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isProductsMovedtoHistory: null == isProductsMovedtoHistory
+          ? _value.isProductsMovedtoHistory
+          : isProductsMovedtoHistory // ignore: cast_nullable_to_non_nullable
               as bool,
       quantity: null == quantity
           ? _value.quantity
@@ -991,6 +1197,7 @@ class _$_CartState implements _CartState {
       required this.userId,
       required this.miniLoading,
       required this.isLoading,
+      required this.isProductsMovedtoHistory,
       required this.quantity,
       required this.optionSuccessFailure,
       required this.isError})
@@ -1011,6 +1218,8 @@ class _$_CartState implements _CartState {
   @override
   final bool isLoading;
   @override
+  final bool isProductsMovedtoHistory;
+  @override
   final CountValueObject quantity;
   @override
   final Option<Either<AppFailure, Unit>> optionSuccessFailure;
@@ -1019,7 +1228,7 @@ class _$_CartState implements _CartState {
 
   @override
   String toString() {
-    return 'CartState(cartProducts: $cartProducts, userId: $userId, miniLoading: $miniLoading, isLoading: $isLoading, quantity: $quantity, optionSuccessFailure: $optionSuccessFailure, isError: $isError)';
+    return 'CartState(cartProducts: $cartProducts, userId: $userId, miniLoading: $miniLoading, isLoading: $isLoading, isProductsMovedtoHistory: $isProductsMovedtoHistory, quantity: $quantity, optionSuccessFailure: $optionSuccessFailure, isError: $isError)';
   }
 
   @override
@@ -1034,6 +1243,9 @@ class _$_CartState implements _CartState {
                 other.miniLoading == miniLoading) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(
+                    other.isProductsMovedtoHistory, isProductsMovedtoHistory) ||
+                other.isProductsMovedtoHistory == isProductsMovedtoHistory) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.optionSuccessFailure, optionSuccessFailure) ||
@@ -1048,6 +1260,7 @@ class _$_CartState implements _CartState {
       userId,
       miniLoading,
       isLoading,
+      isProductsMovedtoHistory,
       quantity,
       optionSuccessFailure,
       isError);
@@ -1065,6 +1278,7 @@ abstract class _CartState implements CartState {
       required final UniqueId userId,
       required final bool miniLoading,
       required final bool isLoading,
+      required final bool isProductsMovedtoHistory,
       required final CountValueObject quantity,
       required final Option<Either<AppFailure, Unit>> optionSuccessFailure,
       required final bool isError}) = _$_CartState;
@@ -1077,6 +1291,8 @@ abstract class _CartState implements CartState {
   bool get miniLoading;
   @override
   bool get isLoading;
+  @override
+  bool get isProductsMovedtoHistory;
   @override
   CountValueObject get quantity;
   @override

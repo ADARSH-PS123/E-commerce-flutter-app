@@ -99,7 +99,9 @@ class Favourites extends StatelessWidget {
                               builder: (context) => ProductDetails(
                                   product: state.favProducts[index]),
                             )),
-                        child: FavTile(product: state.favProducts[index]));
+                        child: FavTile(product: state.favProducts[index], child:  IconButton(onPressed:(){
+                BlocProvider.of<FavouritesBloc>(context).add(FavouritesEvent.removeFavouriteProducts(state.favProducts[index].id));
+              }, icon: const Icon(Icons.favorite)),));
                   },
                 );
               },

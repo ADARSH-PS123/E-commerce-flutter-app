@@ -9,7 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavTile extends StatelessWidget {
   final Product product ;
-  const FavTile({Key? key,required this.product}) : super(key: key);
+  final Widget child;
+  const FavTile({Key? key,required this.product,required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,15 +53,13 @@ class FavTile extends StatelessWidget {
                   style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                product.price.getOrCrash().toString()+"\$",
+                "${product.price.getOrCrash()}\$",
                   style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
                       color: blueBackgroundColor),
                 ),
-              IconButton(onPressed:(){
-                BlocProvider.of<FavouritesBloc>(context).add(FavouritesEvent.removeFavouriteProducts(product.id));
-              }, icon: Icon(Icons.favorite))
+             child
               ],
             ),
           ),
