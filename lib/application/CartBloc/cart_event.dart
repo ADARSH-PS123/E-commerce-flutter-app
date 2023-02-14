@@ -2,7 +2,8 @@ part of 'cart_bloc.dart';
 
 @freezed
 class CartEvent with _$CartEvent {
-  const factory CartEvent.getUserId() = _CartEventGetUserId;
+  // get the userid from ui while listening to main Bloc listner
+
   const factory CartEvent.getCArtProducts() = _CartEventGetCart;
   const factory CartEvent.setCartProducts(UniqueId productId) =
       _CartEventSetCart;

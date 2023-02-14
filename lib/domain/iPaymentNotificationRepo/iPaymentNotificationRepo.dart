@@ -4,7 +4,7 @@ import 'package:ecommerce/domain/core/Failures/paymentFailure.dart';
 import 'package:ecommerce/domain/core/valueobject/valueobject.dart';
 
 abstract class IPaymentRepo {
-      Future <Either<PaymentFailure,Unit>>initPaymentSheet();
+      Future <Either<PaymentFailure,Unit>>initPaymentSheet(String amountInPaisa);
       Future <Either<AppFailure,Unit>> sendMessage();
      Future<bool?>getNotificationPermission();
        void notificationPluginInitialiization();

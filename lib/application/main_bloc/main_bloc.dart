@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -13,7 +14,7 @@ part 'main_bloc.freezed.dart';
 part 'main_event.dart';
 part 'main_state.dart';
 
-@injectable
+@lazySingleton
 class MainBloc extends Bloc<MainEvent, MainState> {
   final Iauth _auth;
   final IAppRepo _appRepo;
@@ -79,4 +80,5 @@ class MainBloc extends Bloc<MainEvent, MainState> {
 
     return super.close();
   }
+
 }

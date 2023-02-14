@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:dartz/dartz.dart';
@@ -17,30 +19,40 @@ part 'favourites_state.dart';
 
 @injectable
 class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
-  final Iauth _auth;
+final MainBloc _mainBloc;
   final IAppRepo _appRepo;
-
+late StreamSubscription userStatusSubscription;
   FavouritesBloc(
-    this._auth,
+    this._mainBloc,
     this._appRepo,
+
   ) : super(FavouritesState.initial()) {
-    on<FavouritesEvent>((event, emit) async {
-      if (event is _FavouritesEventGetUserId) {
+     
+     
         emit(state.copyWith(isLoading: true));
-        await emit.forEach(
-          _auth.getSignedUser(),
-          
-          onData: (Option<AppUser> data) {
-            return data.fold(
-                () => state.copyWith(
-                    isError: true,
-                    isLoading: false,
-                    optionSuccessFailure:
-                        const Some(Left(AppFailure.unexpected()))),
-                (a) => state.copyWith(userId: a.id, isLoading: false));
-          },
-        );
-      } else if (event is _FavouritesEventGetFavourites) {
+  userStatusSubscription =   _mainBloc.stream.listen((MainState _mainState) {
+      final result = _mainState.maybeMap(
+        orElse: () {
+          return FavouritesState.initial();
+        },
+        loading: (value) {
+          return state.copyWith(isLoading: true);
+        },
+        authenticated: (value) {
+          return state.copyWith(isLoading: false, userId: value.appuser.id);
+        },
+        notAuthenticated: (value) {
+          return state.copyWith(isLoading: false);
+        },
+      );
+      emit(result);
+    });
+    on<FavouritesEvent>((event, emit) async {
+ 
+
+
+
+  if (event is _FavouritesEventGetFavourites) {
         if (state.userId.hasData()) {
           emit(state.copyWith(isLoading: true));
           final result = await _appRepo.getFavouriteProducts(
@@ -118,5 +130,11 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         transformer:
             sequential() //for sequentially excuting two events , with the help of package called concurrency
         );
+  }
+  @override
+  Future<void> close()async {
+    // TODO: implement close
+  await  userStatusSubscription.cancel();
+    return super.close();
   }
 }

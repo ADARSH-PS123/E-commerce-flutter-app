@@ -7,6 +7,8 @@ import 'package:ecommerce/core/fonts.dart';
 import 'package:ecommerce/core/spacers.dart';
 import 'package:ecommerce/domain/iapp/productEntity.dart';
 import 'package:ecommerce/presentation/Widgets/widgets.dart';
+import 'package:ecommerce/presentation/mainPages/cart/cart.dart';
+import 'package:ecommerce/presentation/mainPages/homePage/home.dart';
 import 'package:ecommerce/presentation/mainPages/root.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -86,7 +88,8 @@ class ProductDetails extends StatelessWidget {
                                   .getOrCrash(),
                               fit: BoxFit.cover,
                               errorWidget: (context, url, error) =>
-                                  const Center(child: Text("Couldn't load image")),
+                                  const Center(
+                                      child: Text("Couldn't load image")),
                             )
                             /*    Image.asset(
                               product.productPhotos[pageViewIndex].getOrCrash(),
@@ -197,7 +200,14 @@ class ProductDetails extends StatelessWidget {
                 if (state.cartProducts
                     .map((cart) => cart.product)
                     .contains(product)) {
-                  Navigator.pop(context);
+           
+                  Navigator.pushAndRemoveUntil<dynamic>(
+        context,
+        MaterialPageRoute<dynamic>(
+          builder: (BuildContext context) => HomePage(),
+        ),
+        (route) => false,//if you want to disable back feature set to false
+);
                   indexNotifier.value = 3;
                 } else {
                   BlocProvider.of<CartBloc>(context)

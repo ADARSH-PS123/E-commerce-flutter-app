@@ -12,9 +12,9 @@ class PaymentCubitCubit extends Cubit<PaymentCubitState> {
   final IPaymentRepo _paymentRepo;
   PaymentCubitCubit(this._paymentRepo)
       : super(const PaymentCubitState.initial());
-   startPayment() async {
+   startPayment(String amount) async {
   
-    final result = await _paymentRepo.initPaymentSheet();
+    final result = await _paymentRepo.initPaymentSheet(amount);
     final out = result.fold((l) => PaymentCubitState.failed(paymentFailure: l),
         (r) => const PaymentCubitState.success());
     emit(out);

@@ -56,7 +56,7 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i9.IPaymentRepo>(() => _i10.PaymentRepo());
     gh.lazySingleton<_i11.Iauth>(() => _i12.Auth(gh<_i13.FirebaseAuth>()));
-    gh.factory<_i14.MainBloc>(() => _i14.MainBloc(
+    gh.lazySingleton<_i14.MainBloc>(() => _i14.MainBloc(
           gh<_i3.IAppRepo>(),
           gh<_i11.Iauth>(),
         ));
@@ -64,7 +64,7 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i15.NoticationCubit(gh<_i9.IPaymentRepo>()));
     gh.factory<_i16.OrderCubit>(() => _i16.OrderCubit(
           gh<_i3.IAppRepo>(),
-          gh<_i11.Iauth>(),
+          gh<_i14.MainBloc>(),
         ));
     gh.factory<_i17.PaymentCubitCubit>(
         () => _i17.PaymentCubitCubit(gh<_i9.IPaymentRepo>()));
@@ -73,14 +73,15 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i19.AuthBloc>(() => _i19.AuthBloc(gh<_i11.Iauth>()));
     gh.factory<_i20.CartBloc>(() => _i20.CartBloc(
           gh<_i3.IAppRepo>(),
-          gh<_i11.Iauth>(),
+          gh<_i14.MainBloc>(),
         ));
     gh.factory<_i21.EditUserBloc>(() => _i21.EditUserBloc(
           gh<_i3.IAppRepo>(),
           gh<_i11.Iauth>(),
+          gh<_i14.MainBloc>(),
         ));
     gh.factory<_i22.FavouritesBloc>(() => _i22.FavouritesBloc(
-          gh<_i11.Iauth>(),
+          gh<_i14.MainBloc>(),
           gh<_i3.IAppRepo>(),
         ));
     return this;

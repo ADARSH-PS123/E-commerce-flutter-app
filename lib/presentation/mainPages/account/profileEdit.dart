@@ -185,28 +185,32 @@ class EditWidget extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      TextButton.icon(
-                          style: ButtonStyle(
-                              foregroundColor:
-                                  MaterialStateProperty.all(balckColor)),
-                          onPressed: () {
-                            BlocProvider.of<EditUserBloc>(context)
-                                .add(const EditUserEvent.editProfilePhoto());
-                          },
-                          label: const Text('Edit profile picture'),
-                          icon: const Icon(Icons.mode_edit_outline)),
+                      Expanded(
+                        child: TextButton.icon(
+                            style: ButtonStyle(
+                                foregroundColor:
+                                    MaterialStateProperty.all(balckColor)),
+                            onPressed: () {
+                              BlocProvider.of<EditUserBloc>(context)
+                                  .add(const EditUserEvent.editProfilePhoto());
+                            },
+                            label: const Text('Edit profile picture',overflow: TextOverflow.ellipsis,),
+                            icon: const Icon(Icons.mode_edit_outline)),
+                      ),
                       profilePhoto.hasData()
-                          ? TextButton.icon(
-                              style: ButtonStyle(
-                                  foregroundColor:
-                                      MaterialStateProperty.all(balckColor)),
-                              onPressed: () {
-                                BlocProvider.of<EditUserBloc>(context).add(
-                                    const EditUserEvent.removeProfilePhoto());
-                              },
-                              label: const Text('Remove profile picture'),
-                              icon: const Icon(Icons.delete_rounded))
-                          : const SizedBox()
+                          ? Expanded(
+                            child: TextButton.icon(
+                                style: ButtonStyle(
+                                    foregroundColor:
+                                        MaterialStateProperty.all(balckColor)),
+                                onPressed: () {
+                                  BlocProvider.of<EditUserBloc>(context).add(
+                                      const EditUserEvent.removeProfilePhoto());
+                                },
+                                label: const Text('Remove profile picture',overflow: TextOverflow.ellipsis,),
+                                icon: const Icon(Icons.delete_rounded)),
+                          )
+                          : const SizedBox.shrink()
                     ],
                   )
                 ],

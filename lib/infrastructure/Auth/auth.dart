@@ -112,6 +112,7 @@ await _firebaseAuth.signOut();
   @override
   Stream<Option<AppUser>> getSignedUser() async* {
     final User? user =  _firebaseAuth.currentUser;
+    log('get signed user api called*******************');
     if (user == null) {
  
       yield none();

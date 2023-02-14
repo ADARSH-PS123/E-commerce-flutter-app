@@ -21,7 +21,6 @@ mixin _$EditUserEvent {
     required TResult Function(String userName) userNameChanged,
     required TResult Function(String userAddress) userAddressChanged,
     required TResult Function(String pincode) userPincodeChanged,
-    required TResult Function() getSignedUser,
     required TResult Function() editUserInfo,
     required TResult Function() editProfilePhoto,
     required TResult Function() removeProfilePhoto,
@@ -32,7 +31,6 @@ mixin _$EditUserEvent {
     TResult? Function(String userName)? userNameChanged,
     TResult? Function(String userAddress)? userAddressChanged,
     TResult? Function(String pincode)? userPincodeChanged,
-    TResult? Function()? getSignedUser,
     TResult? Function()? editUserInfo,
     TResult? Function()? editProfilePhoto,
     TResult? Function()? removeProfilePhoto,
@@ -43,7 +41,6 @@ mixin _$EditUserEvent {
     TResult Function(String userName)? userNameChanged,
     TResult Function(String userAddress)? userAddressChanged,
     TResult Function(String pincode)? userPincodeChanged,
-    TResult Function()? getSignedUser,
     TResult Function()? editUserInfo,
     TResult Function()? editProfilePhoto,
     TResult Function()? removeProfilePhoto,
@@ -58,7 +55,6 @@ mixin _$EditUserEvent {
         userAddressChanged,
     required TResult Function(_EditUserEventUserPincodeChanged value)
         userPincodeChanged,
-    required TResult Function(_EditUserEventGetSignedUser value) getSignedUser,
     required TResult Function(_EditUserEventEditUserInfo value) editUserInfo,
     required TResult Function(_EditUserEventEditProfilePhoto value)
         editProfilePhoto,
@@ -73,7 +69,6 @@ mixin _$EditUserEvent {
         userAddressChanged,
     TResult? Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult? Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult? Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult? Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult? Function(_EditUserEventRemoveProfilePhoto value)?
@@ -87,7 +82,6 @@ mixin _$EditUserEvent {
         userAddressChanged,
     TResult Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult Function(_EditUserEventRemoveProfilePhoto value)?
@@ -186,7 +180,6 @@ class _$_EditUserEventUserNameChanged implements _EditUserEventUserNameChanged {
     required TResult Function(String userName) userNameChanged,
     required TResult Function(String userAddress) userAddressChanged,
     required TResult Function(String pincode) userPincodeChanged,
-    required TResult Function() getSignedUser,
     required TResult Function() editUserInfo,
     required TResult Function() editProfilePhoto,
     required TResult Function() removeProfilePhoto,
@@ -200,7 +193,6 @@ class _$_EditUserEventUserNameChanged implements _EditUserEventUserNameChanged {
     TResult? Function(String userName)? userNameChanged,
     TResult? Function(String userAddress)? userAddressChanged,
     TResult? Function(String pincode)? userPincodeChanged,
-    TResult? Function()? getSignedUser,
     TResult? Function()? editUserInfo,
     TResult? Function()? editProfilePhoto,
     TResult? Function()? removeProfilePhoto,
@@ -214,7 +206,6 @@ class _$_EditUserEventUserNameChanged implements _EditUserEventUserNameChanged {
     TResult Function(String userName)? userNameChanged,
     TResult Function(String userAddress)? userAddressChanged,
     TResult Function(String pincode)? userPincodeChanged,
-    TResult Function()? getSignedUser,
     TResult Function()? editUserInfo,
     TResult Function()? editProfilePhoto,
     TResult Function()? removeProfilePhoto,
@@ -235,7 +226,6 @@ class _$_EditUserEventUserNameChanged implements _EditUserEventUserNameChanged {
         userAddressChanged,
     required TResult Function(_EditUserEventUserPincodeChanged value)
         userPincodeChanged,
-    required TResult Function(_EditUserEventGetSignedUser value) getSignedUser,
     required TResult Function(_EditUserEventEditUserInfo value) editUserInfo,
     required TResult Function(_EditUserEventEditProfilePhoto value)
         editProfilePhoto,
@@ -253,7 +243,6 @@ class _$_EditUserEventUserNameChanged implements _EditUserEventUserNameChanged {
         userAddressChanged,
     TResult? Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult? Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult? Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult? Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult? Function(_EditUserEventRemoveProfilePhoto value)?
@@ -270,7 +259,6 @@ class _$_EditUserEventUserNameChanged implements _EditUserEventUserNameChanged {
         userAddressChanged,
     TResult Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult Function(_EditUserEventRemoveProfilePhoto value)?
@@ -368,7 +356,6 @@ class _$_EditUserEventUserAddressChanged
     required TResult Function(String userName) userNameChanged,
     required TResult Function(String userAddress) userAddressChanged,
     required TResult Function(String pincode) userPincodeChanged,
-    required TResult Function() getSignedUser,
     required TResult Function() editUserInfo,
     required TResult Function() editProfilePhoto,
     required TResult Function() removeProfilePhoto,
@@ -382,7 +369,6 @@ class _$_EditUserEventUserAddressChanged
     TResult? Function(String userName)? userNameChanged,
     TResult? Function(String userAddress)? userAddressChanged,
     TResult? Function(String pincode)? userPincodeChanged,
-    TResult? Function()? getSignedUser,
     TResult? Function()? editUserInfo,
     TResult? Function()? editProfilePhoto,
     TResult? Function()? removeProfilePhoto,
@@ -396,7 +382,6 @@ class _$_EditUserEventUserAddressChanged
     TResult Function(String userName)? userNameChanged,
     TResult Function(String userAddress)? userAddressChanged,
     TResult Function(String pincode)? userPincodeChanged,
-    TResult Function()? getSignedUser,
     TResult Function()? editUserInfo,
     TResult Function()? editProfilePhoto,
     TResult Function()? removeProfilePhoto,
@@ -417,7 +402,6 @@ class _$_EditUserEventUserAddressChanged
         userAddressChanged,
     required TResult Function(_EditUserEventUserPincodeChanged value)
         userPincodeChanged,
-    required TResult Function(_EditUserEventGetSignedUser value) getSignedUser,
     required TResult Function(_EditUserEventEditUserInfo value) editUserInfo,
     required TResult Function(_EditUserEventEditProfilePhoto value)
         editProfilePhoto,
@@ -435,7 +419,6 @@ class _$_EditUserEventUserAddressChanged
         userAddressChanged,
     TResult? Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult? Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult? Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult? Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult? Function(_EditUserEventRemoveProfilePhoto value)?
@@ -452,7 +435,6 @@ class _$_EditUserEventUserAddressChanged
         userAddressChanged,
     TResult Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult Function(_EditUserEventRemoveProfilePhoto value)?
@@ -550,7 +532,6 @@ class _$_EditUserEventUserPincodeChanged
     required TResult Function(String userName) userNameChanged,
     required TResult Function(String userAddress) userAddressChanged,
     required TResult Function(String pincode) userPincodeChanged,
-    required TResult Function() getSignedUser,
     required TResult Function() editUserInfo,
     required TResult Function() editProfilePhoto,
     required TResult Function() removeProfilePhoto,
@@ -564,7 +545,6 @@ class _$_EditUserEventUserPincodeChanged
     TResult? Function(String userName)? userNameChanged,
     TResult? Function(String userAddress)? userAddressChanged,
     TResult? Function(String pincode)? userPincodeChanged,
-    TResult? Function()? getSignedUser,
     TResult? Function()? editUserInfo,
     TResult? Function()? editProfilePhoto,
     TResult? Function()? removeProfilePhoto,
@@ -578,7 +558,6 @@ class _$_EditUserEventUserPincodeChanged
     TResult Function(String userName)? userNameChanged,
     TResult Function(String userAddress)? userAddressChanged,
     TResult Function(String pincode)? userPincodeChanged,
-    TResult Function()? getSignedUser,
     TResult Function()? editUserInfo,
     TResult Function()? editProfilePhoto,
     TResult Function()? removeProfilePhoto,
@@ -599,7 +578,6 @@ class _$_EditUserEventUserPincodeChanged
         userAddressChanged,
     required TResult Function(_EditUserEventUserPincodeChanged value)
         userPincodeChanged,
-    required TResult Function(_EditUserEventGetSignedUser value) getSignedUser,
     required TResult Function(_EditUserEventEditUserInfo value) editUserInfo,
     required TResult Function(_EditUserEventEditProfilePhoto value)
         editProfilePhoto,
@@ -617,7 +595,6 @@ class _$_EditUserEventUserPincodeChanged
         userAddressChanged,
     TResult? Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult? Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult? Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult? Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult? Function(_EditUserEventRemoveProfilePhoto value)?
@@ -634,7 +611,6 @@ class _$_EditUserEventUserPincodeChanged
         userAddressChanged,
     TResult Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult Function(_EditUserEventRemoveProfilePhoto value)?
@@ -657,152 +633,6 @@ abstract class _EditUserEventUserPincodeChanged implements EditUserEvent {
   _$$_EditUserEventUserPincodeChangedCopyWith<
           _$_EditUserEventUserPincodeChanged>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_EditUserEventGetSignedUserCopyWith<$Res> {
-  factory _$$_EditUserEventGetSignedUserCopyWith(
-          _$_EditUserEventGetSignedUser value,
-          $Res Function(_$_EditUserEventGetSignedUser) then) =
-      __$$_EditUserEventGetSignedUserCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_EditUserEventGetSignedUserCopyWithImpl<$Res>
-    extends _$EditUserEventCopyWithImpl<$Res, _$_EditUserEventGetSignedUser>
-    implements _$$_EditUserEventGetSignedUserCopyWith<$Res> {
-  __$$_EditUserEventGetSignedUserCopyWithImpl(
-      _$_EditUserEventGetSignedUser _value,
-      $Res Function(_$_EditUserEventGetSignedUser) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_EditUserEventGetSignedUser implements _EditUserEventGetSignedUser {
-  const _$_EditUserEventGetSignedUser();
-
-  @override
-  String toString() {
-    return 'EditUserEvent.getSignedUser()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_EditUserEventGetSignedUser);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String userName) userNameChanged,
-    required TResult Function(String userAddress) userAddressChanged,
-    required TResult Function(String pincode) userPincodeChanged,
-    required TResult Function() getSignedUser,
-    required TResult Function() editUserInfo,
-    required TResult Function() editProfilePhoto,
-    required TResult Function() removeProfilePhoto,
-  }) {
-    return getSignedUser();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userName)? userNameChanged,
-    TResult? Function(String userAddress)? userAddressChanged,
-    TResult? Function(String pincode)? userPincodeChanged,
-    TResult? Function()? getSignedUser,
-    TResult? Function()? editUserInfo,
-    TResult? Function()? editProfilePhoto,
-    TResult? Function()? removeProfilePhoto,
-  }) {
-    return getSignedUser?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userName)? userNameChanged,
-    TResult Function(String userAddress)? userAddressChanged,
-    TResult Function(String pincode)? userPincodeChanged,
-    TResult Function()? getSignedUser,
-    TResult Function()? editUserInfo,
-    TResult Function()? editProfilePhoto,
-    TResult Function()? removeProfilePhoto,
-    required TResult orElse(),
-  }) {
-    if (getSignedUser != null) {
-      return getSignedUser();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_EditUserEventUserNameChanged value)
-        userNameChanged,
-    required TResult Function(_EditUserEventUserAddressChanged value)
-        userAddressChanged,
-    required TResult Function(_EditUserEventUserPincodeChanged value)
-        userPincodeChanged,
-    required TResult Function(_EditUserEventGetSignedUser value) getSignedUser,
-    required TResult Function(_EditUserEventEditUserInfo value) editUserInfo,
-    required TResult Function(_EditUserEventEditProfilePhoto value)
-        editProfilePhoto,
-    required TResult Function(_EditUserEventRemoveProfilePhoto value)
-        removeProfilePhoto,
-  }) {
-    return getSignedUser(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_EditUserEventUserNameChanged value)? userNameChanged,
-    TResult? Function(_EditUserEventUserAddressChanged value)?
-        userAddressChanged,
-    TResult? Function(_EditUserEventUserPincodeChanged value)?
-        userPincodeChanged,
-    TResult? Function(_EditUserEventGetSignedUser value)? getSignedUser,
-    TResult? Function(_EditUserEventEditUserInfo value)? editUserInfo,
-    TResult? Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
-    TResult? Function(_EditUserEventRemoveProfilePhoto value)?
-        removeProfilePhoto,
-  }) {
-    return getSignedUser?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_EditUserEventUserNameChanged value)? userNameChanged,
-    TResult Function(_EditUserEventUserAddressChanged value)?
-        userAddressChanged,
-    TResult Function(_EditUserEventUserPincodeChanged value)?
-        userPincodeChanged,
-    TResult Function(_EditUserEventGetSignedUser value)? getSignedUser,
-    TResult Function(_EditUserEventEditUserInfo value)? editUserInfo,
-    TResult Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
-    TResult Function(_EditUserEventRemoveProfilePhoto value)?
-        removeProfilePhoto,
-    required TResult orElse(),
-  }) {
-    if (getSignedUser != null) {
-      return getSignedUser(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _EditUserEventGetSignedUser implements EditUserEvent {
-  const factory _EditUserEventGetSignedUser() = _$_EditUserEventGetSignedUser;
 }
 
 /// @nodoc
@@ -849,7 +679,6 @@ class _$_EditUserEventEditUserInfo implements _EditUserEventEditUserInfo {
     required TResult Function(String userName) userNameChanged,
     required TResult Function(String userAddress) userAddressChanged,
     required TResult Function(String pincode) userPincodeChanged,
-    required TResult Function() getSignedUser,
     required TResult Function() editUserInfo,
     required TResult Function() editProfilePhoto,
     required TResult Function() removeProfilePhoto,
@@ -863,7 +692,6 @@ class _$_EditUserEventEditUserInfo implements _EditUserEventEditUserInfo {
     TResult? Function(String userName)? userNameChanged,
     TResult? Function(String userAddress)? userAddressChanged,
     TResult? Function(String pincode)? userPincodeChanged,
-    TResult? Function()? getSignedUser,
     TResult? Function()? editUserInfo,
     TResult? Function()? editProfilePhoto,
     TResult? Function()? removeProfilePhoto,
@@ -877,7 +705,6 @@ class _$_EditUserEventEditUserInfo implements _EditUserEventEditUserInfo {
     TResult Function(String userName)? userNameChanged,
     TResult Function(String userAddress)? userAddressChanged,
     TResult Function(String pincode)? userPincodeChanged,
-    TResult Function()? getSignedUser,
     TResult Function()? editUserInfo,
     TResult Function()? editProfilePhoto,
     TResult Function()? removeProfilePhoto,
@@ -898,7 +725,6 @@ class _$_EditUserEventEditUserInfo implements _EditUserEventEditUserInfo {
         userAddressChanged,
     required TResult Function(_EditUserEventUserPincodeChanged value)
         userPincodeChanged,
-    required TResult Function(_EditUserEventGetSignedUser value) getSignedUser,
     required TResult Function(_EditUserEventEditUserInfo value) editUserInfo,
     required TResult Function(_EditUserEventEditProfilePhoto value)
         editProfilePhoto,
@@ -916,7 +742,6 @@ class _$_EditUserEventEditUserInfo implements _EditUserEventEditUserInfo {
         userAddressChanged,
     TResult? Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult? Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult? Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult? Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult? Function(_EditUserEventRemoveProfilePhoto value)?
@@ -933,7 +758,6 @@ class _$_EditUserEventEditUserInfo implements _EditUserEventEditUserInfo {
         userAddressChanged,
     TResult Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult Function(_EditUserEventRemoveProfilePhoto value)?
@@ -996,7 +820,6 @@ class _$_EditUserEventEditProfilePhoto
     required TResult Function(String userName) userNameChanged,
     required TResult Function(String userAddress) userAddressChanged,
     required TResult Function(String pincode) userPincodeChanged,
-    required TResult Function() getSignedUser,
     required TResult Function() editUserInfo,
     required TResult Function() editProfilePhoto,
     required TResult Function() removeProfilePhoto,
@@ -1010,7 +833,6 @@ class _$_EditUserEventEditProfilePhoto
     TResult? Function(String userName)? userNameChanged,
     TResult? Function(String userAddress)? userAddressChanged,
     TResult? Function(String pincode)? userPincodeChanged,
-    TResult? Function()? getSignedUser,
     TResult? Function()? editUserInfo,
     TResult? Function()? editProfilePhoto,
     TResult? Function()? removeProfilePhoto,
@@ -1024,7 +846,6 @@ class _$_EditUserEventEditProfilePhoto
     TResult Function(String userName)? userNameChanged,
     TResult Function(String userAddress)? userAddressChanged,
     TResult Function(String pincode)? userPincodeChanged,
-    TResult Function()? getSignedUser,
     TResult Function()? editUserInfo,
     TResult Function()? editProfilePhoto,
     TResult Function()? removeProfilePhoto,
@@ -1045,7 +866,6 @@ class _$_EditUserEventEditProfilePhoto
         userAddressChanged,
     required TResult Function(_EditUserEventUserPincodeChanged value)
         userPincodeChanged,
-    required TResult Function(_EditUserEventGetSignedUser value) getSignedUser,
     required TResult Function(_EditUserEventEditUserInfo value) editUserInfo,
     required TResult Function(_EditUserEventEditProfilePhoto value)
         editProfilePhoto,
@@ -1063,7 +883,6 @@ class _$_EditUserEventEditProfilePhoto
         userAddressChanged,
     TResult? Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult? Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult? Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult? Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult? Function(_EditUserEventRemoveProfilePhoto value)?
@@ -1080,7 +899,6 @@ class _$_EditUserEventEditProfilePhoto
         userAddressChanged,
     TResult Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult Function(_EditUserEventRemoveProfilePhoto value)?
@@ -1145,7 +963,6 @@ class _$_EditUserEventRemoveProfilePhoto
     required TResult Function(String userName) userNameChanged,
     required TResult Function(String userAddress) userAddressChanged,
     required TResult Function(String pincode) userPincodeChanged,
-    required TResult Function() getSignedUser,
     required TResult Function() editUserInfo,
     required TResult Function() editProfilePhoto,
     required TResult Function() removeProfilePhoto,
@@ -1159,7 +976,6 @@ class _$_EditUserEventRemoveProfilePhoto
     TResult? Function(String userName)? userNameChanged,
     TResult? Function(String userAddress)? userAddressChanged,
     TResult? Function(String pincode)? userPincodeChanged,
-    TResult? Function()? getSignedUser,
     TResult? Function()? editUserInfo,
     TResult? Function()? editProfilePhoto,
     TResult? Function()? removeProfilePhoto,
@@ -1173,7 +989,6 @@ class _$_EditUserEventRemoveProfilePhoto
     TResult Function(String userName)? userNameChanged,
     TResult Function(String userAddress)? userAddressChanged,
     TResult Function(String pincode)? userPincodeChanged,
-    TResult Function()? getSignedUser,
     TResult Function()? editUserInfo,
     TResult Function()? editProfilePhoto,
     TResult Function()? removeProfilePhoto,
@@ -1194,7 +1009,6 @@ class _$_EditUserEventRemoveProfilePhoto
         userAddressChanged,
     required TResult Function(_EditUserEventUserPincodeChanged value)
         userPincodeChanged,
-    required TResult Function(_EditUserEventGetSignedUser value) getSignedUser,
     required TResult Function(_EditUserEventEditUserInfo value) editUserInfo,
     required TResult Function(_EditUserEventEditProfilePhoto value)
         editProfilePhoto,
@@ -1212,7 +1026,6 @@ class _$_EditUserEventRemoveProfilePhoto
         userAddressChanged,
     TResult? Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult? Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult? Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult? Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult? Function(_EditUserEventRemoveProfilePhoto value)?
@@ -1229,7 +1042,6 @@ class _$_EditUserEventRemoveProfilePhoto
         userAddressChanged,
     TResult Function(_EditUserEventUserPincodeChanged value)?
         userPincodeChanged,
-    TResult Function(_EditUserEventGetSignedUser value)? getSignedUser,
     TResult Function(_EditUserEventEditUserInfo value)? editUserInfo,
     TResult Function(_EditUserEventEditProfilePhoto value)? editProfilePhoto,
     TResult Function(_EditUserEventRemoveProfilePhoto value)?

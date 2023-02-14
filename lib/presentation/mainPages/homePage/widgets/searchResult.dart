@@ -5,6 +5,7 @@ import 'package:ecommerce/core/fonts.dart';
 import 'package:ecommerce/domain/iapp/productEntity.dart';
 import 'package:ecommerce/presentation/Widgets/productTile.dart';
 import 'package:ecommerce/presentation/mainPages/homePage/widgets/productDetails.dart';
+import 'package:ecommerce/presentation/responsive.dart';
 import 'package:flutter/material.dart';
 
 
@@ -21,7 +22,7 @@ class SearchResult extends StatelessWidget {
     return Column(
       //Text item count-text , result- grid
       children: [
-   
+     
         Center(
           child: Text(
             "Found ${products.length} items",
@@ -30,8 +31,10 @@ class SearchResult extends StatelessWidget {
         ),
         Expanded(
           child: MasonryGridView.count(
+            shrinkWrap: true,
+     
             padding:const EdgeInsets.symmetric(horizontal: 15),
-            crossAxisCount: 2,
+            crossAxisCount:Responsive.isMobile(context)? 2:3,
             crossAxisSpacing: 20,
             mainAxisSpacing: 5,
             itemCount: products.length,

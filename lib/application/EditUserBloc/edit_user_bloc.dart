@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:dartz/dartz.dart';
@@ -17,10 +19,41 @@ part 'edit_user_state.dart';
 
 @injectable
 class EditUserBloc extends Bloc<EditUserEvent, EditUserState> {
-
+final MainBloc _mainBloc;
   final IAppRepo _iAppRepo;
+ late StreamSubscription userStatusSubscription;
 final Iauth _iauth;
-  EditUserBloc( this._iAppRepo,this._iauth) : super(EditUserState.initial()) {
+  EditUserBloc( this._iAppRepo,this._iauth,this._mainBloc) : super(EditUserState.initial()) {
+ 
+     
+        emit(state.copyWith(isLoading: true));
+  userStatusSubscription =   _mainBloc.stream.listen((MainState _mainState) {
+      final result = _mainState.maybeMap(
+        orElse: () {
+          return EditUserState.initial();
+        },
+        loading: (value) {
+          return state.copyWith(isLoading: true);
+        },
+        authenticated: (user) {
+          return  state.copyWith(
+                isLoading: false,
+                user: user.appuser,
+                pincode: user.appuser.fullAddress.pincode,
+                userAddress: user.appuser.fullAddress.userAddress,
+                userName: user.appuser.userName);
+        },
+        notAuthenticated: (value) {
+        return  state.copyWith(
+                isLoading: false,
+                optionSuccessFailure:
+                    const Some(Left(AppFailure.insufficientPermissions())),
+                isError: true);
+        },
+      );
+      emit(result);
+    });
+
     on<EditUserEvent>((event, emit) async {
       if (event is _EditUserEventUserNameChanged) {
         final userName = UserName(event.userName);
@@ -30,32 +63,7 @@ final Iauth _iauth;
         emit(state.copyWith(userAddress: UserAddress(event.userAddress)));
       } else if (event is _EditUserEventUserPincodeChanged) {
         emit(state.copyWith(pincode: PinCode(event.pincode)));
-      } else if (event is _EditUserEventGetSignedUser) {
-         emit(state.copyWith(isLoading: true));
-  await emit.forEach(
-          _iauth.getSignedUser(),
-          onData: (Option<AppUser> data) {
-            return data.fold(
-                () => state.copyWith(
-                isLoading: false,
-                optionSuccessFailure:
-                    const Some(Left(AppFailure.insufficientPermissions())),
-                isError: true),
-                (user) =>  state.copyWith(
-                isLoading: false,
-                user: user,
-                pincode: user.fullAddress.pincode,
-                userAddress: user.fullAddress.userAddress,
-                userName: user.userName));
-          },
-        );
-
-      
-
-
-
-
-      } else if (event is _EditUserEventEditUserInfo) {
+      }  else if (event is _EditUserEventEditUserInfo) {
         emit(state.copyWith(isLoading: true));
         final appUser = AppUser(
             id: state.user.id,
@@ -78,7 +86,7 @@ final Iauth _iauth;
                 isLoading: false,
                 optionSuccessFailure: Some(Right(r))));
         emit(out);
-        add(const EditUserEvent.getSignedUser());
+     
       }
       if (event is _EditUserEventEditProfilePhoto) {
         emit(state.copyWith(isLoading: true));

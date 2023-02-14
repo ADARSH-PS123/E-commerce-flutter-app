@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FavouritesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserId,
     required TResult Function() getFavouriteProducts,
     required TResult Function(UniqueId productId) setFavouriteProducts,
     required TResult Function(UniqueId productId) removeFavouriteProducts,
@@ -26,7 +25,6 @@ mixin _$FavouritesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserId,
     TResult? Function()? getFavouriteProducts,
     TResult? Function(UniqueId productId)? setFavouriteProducts,
     TResult? Function(UniqueId productId)? removeFavouriteProducts,
@@ -34,7 +32,6 @@ mixin _$FavouritesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserId,
     TResult Function()? getFavouriteProducts,
     TResult Function(UniqueId productId)? setFavouriteProducts,
     TResult Function(UniqueId productId)? removeFavouriteProducts,
@@ -43,7 +40,6 @@ mixin _$FavouritesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FavouritesEventGetUserId value) getUserId,
     required TResult Function(_FavouritesEventGetFavourites value)
         getFavouriteProducts,
     required TResult Function(_FavouritesEventSetFavourites value)
@@ -54,7 +50,6 @@ mixin _$FavouritesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FavouritesEventGetUserId value)? getUserId,
     TResult? Function(_FavouritesEventGetFavourites value)?
         getFavouriteProducts,
     TResult? Function(_FavouritesEventSetFavourites value)?
@@ -65,7 +60,6 @@ mixin _$FavouritesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FavouritesEventGetUserId value)? getUserId,
     TResult Function(_FavouritesEventGetFavourites value)? getFavouriteProducts,
     TResult Function(_FavouritesEventSetFavourites value)? setFavouriteProducts,
     TResult Function(_FavouritesEventRemoveFavourites value)?
@@ -91,129 +85,6 @@ class _$FavouritesEventCopyWithImpl<$Res, $Val extends FavouritesEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_FavouritesEventGetUserIdCopyWith<$Res> {
-  factory _$$_FavouritesEventGetUserIdCopyWith(
-          _$_FavouritesEventGetUserId value,
-          $Res Function(_$_FavouritesEventGetUserId) then) =
-      __$$_FavouritesEventGetUserIdCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_FavouritesEventGetUserIdCopyWithImpl<$Res>
-    extends _$FavouritesEventCopyWithImpl<$Res, _$_FavouritesEventGetUserId>
-    implements _$$_FavouritesEventGetUserIdCopyWith<$Res> {
-  __$$_FavouritesEventGetUserIdCopyWithImpl(_$_FavouritesEventGetUserId _value,
-      $Res Function(_$_FavouritesEventGetUserId) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_FavouritesEventGetUserId implements _FavouritesEventGetUserId {
-  const _$_FavouritesEventGetUserId();
-
-  @override
-  String toString() {
-    return 'FavouritesEvent.getUserId()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_FavouritesEventGetUserId);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getUserId,
-    required TResult Function() getFavouriteProducts,
-    required TResult Function(UniqueId productId) setFavouriteProducts,
-    required TResult Function(UniqueId productId) removeFavouriteProducts,
-  }) {
-    return getUserId();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserId,
-    TResult? Function()? getFavouriteProducts,
-    TResult? Function(UniqueId productId)? setFavouriteProducts,
-    TResult? Function(UniqueId productId)? removeFavouriteProducts,
-  }) {
-    return getUserId?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserId,
-    TResult Function()? getFavouriteProducts,
-    TResult Function(UniqueId productId)? setFavouriteProducts,
-    TResult Function(UniqueId productId)? removeFavouriteProducts,
-    required TResult orElse(),
-  }) {
-    if (getUserId != null) {
-      return getUserId();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FavouritesEventGetUserId value) getUserId,
-    required TResult Function(_FavouritesEventGetFavourites value)
-        getFavouriteProducts,
-    required TResult Function(_FavouritesEventSetFavourites value)
-        setFavouriteProducts,
-    required TResult Function(_FavouritesEventRemoveFavourites value)
-        removeFavouriteProducts,
-  }) {
-    return getUserId(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FavouritesEventGetUserId value)? getUserId,
-    TResult? Function(_FavouritesEventGetFavourites value)?
-        getFavouriteProducts,
-    TResult? Function(_FavouritesEventSetFavourites value)?
-        setFavouriteProducts,
-    TResult? Function(_FavouritesEventRemoveFavourites value)?
-        removeFavouriteProducts,
-  }) {
-    return getUserId?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FavouritesEventGetUserId value)? getUserId,
-    TResult Function(_FavouritesEventGetFavourites value)? getFavouriteProducts,
-    TResult Function(_FavouritesEventSetFavourites value)? setFavouriteProducts,
-    TResult Function(_FavouritesEventRemoveFavourites value)?
-        removeFavouriteProducts,
-    required TResult orElse(),
-  }) {
-    if (getUserId != null) {
-      return getUserId(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _FavouritesEventGetUserId implements FavouritesEvent {
-  const factory _FavouritesEventGetUserId() = _$_FavouritesEventGetUserId;
 }
 
 /// @nodoc
@@ -257,7 +128,6 @@ class _$_FavouritesEventGetFavourites implements _FavouritesEventGetFavourites {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserId,
     required TResult Function() getFavouriteProducts,
     required TResult Function(UniqueId productId) setFavouriteProducts,
     required TResult Function(UniqueId productId) removeFavouriteProducts,
@@ -268,7 +138,6 @@ class _$_FavouritesEventGetFavourites implements _FavouritesEventGetFavourites {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserId,
     TResult? Function()? getFavouriteProducts,
     TResult? Function(UniqueId productId)? setFavouriteProducts,
     TResult? Function(UniqueId productId)? removeFavouriteProducts,
@@ -279,7 +148,6 @@ class _$_FavouritesEventGetFavourites implements _FavouritesEventGetFavourites {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserId,
     TResult Function()? getFavouriteProducts,
     TResult Function(UniqueId productId)? setFavouriteProducts,
     TResult Function(UniqueId productId)? removeFavouriteProducts,
@@ -294,7 +162,6 @@ class _$_FavouritesEventGetFavourites implements _FavouritesEventGetFavourites {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FavouritesEventGetUserId value) getUserId,
     required TResult Function(_FavouritesEventGetFavourites value)
         getFavouriteProducts,
     required TResult Function(_FavouritesEventSetFavourites value)
@@ -308,7 +175,6 @@ class _$_FavouritesEventGetFavourites implements _FavouritesEventGetFavourites {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FavouritesEventGetUserId value)? getUserId,
     TResult? Function(_FavouritesEventGetFavourites value)?
         getFavouriteProducts,
     TResult? Function(_FavouritesEventSetFavourites value)?
@@ -322,7 +188,6 @@ class _$_FavouritesEventGetFavourites implements _FavouritesEventGetFavourites {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FavouritesEventGetUserId value)? getUserId,
     TResult Function(_FavouritesEventGetFavourites value)? getFavouriteProducts,
     TResult Function(_FavouritesEventSetFavourites value)? setFavouriteProducts,
     TResult Function(_FavouritesEventRemoveFavourites value)?
@@ -409,7 +274,6 @@ class _$_FavouritesEventSetFavourites implements _FavouritesEventSetFavourites {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserId,
     required TResult Function() getFavouriteProducts,
     required TResult Function(UniqueId productId) setFavouriteProducts,
     required TResult Function(UniqueId productId) removeFavouriteProducts,
@@ -420,7 +284,6 @@ class _$_FavouritesEventSetFavourites implements _FavouritesEventSetFavourites {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserId,
     TResult? Function()? getFavouriteProducts,
     TResult? Function(UniqueId productId)? setFavouriteProducts,
     TResult? Function(UniqueId productId)? removeFavouriteProducts,
@@ -431,7 +294,6 @@ class _$_FavouritesEventSetFavourites implements _FavouritesEventSetFavourites {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserId,
     TResult Function()? getFavouriteProducts,
     TResult Function(UniqueId productId)? setFavouriteProducts,
     TResult Function(UniqueId productId)? removeFavouriteProducts,
@@ -446,7 +308,6 @@ class _$_FavouritesEventSetFavourites implements _FavouritesEventSetFavourites {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FavouritesEventGetUserId value) getUserId,
     required TResult Function(_FavouritesEventGetFavourites value)
         getFavouriteProducts,
     required TResult Function(_FavouritesEventSetFavourites value)
@@ -460,7 +321,6 @@ class _$_FavouritesEventSetFavourites implements _FavouritesEventSetFavourites {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FavouritesEventGetUserId value)? getUserId,
     TResult? Function(_FavouritesEventGetFavourites value)?
         getFavouriteProducts,
     TResult? Function(_FavouritesEventSetFavourites value)?
@@ -474,7 +334,6 @@ class _$_FavouritesEventSetFavourites implements _FavouritesEventSetFavourites {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FavouritesEventGetUserId value)? getUserId,
     TResult Function(_FavouritesEventGetFavourites value)? getFavouriteProducts,
     TResult Function(_FavouritesEventSetFavourites value)? setFavouriteProducts,
     TResult Function(_FavouritesEventRemoveFavourites value)?
@@ -569,7 +428,6 @@ class _$_FavouritesEventRemoveFavourites
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserId,
     required TResult Function() getFavouriteProducts,
     required TResult Function(UniqueId productId) setFavouriteProducts,
     required TResult Function(UniqueId productId) removeFavouriteProducts,
@@ -580,7 +438,6 @@ class _$_FavouritesEventRemoveFavourites
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserId,
     TResult? Function()? getFavouriteProducts,
     TResult? Function(UniqueId productId)? setFavouriteProducts,
     TResult? Function(UniqueId productId)? removeFavouriteProducts,
@@ -591,7 +448,6 @@ class _$_FavouritesEventRemoveFavourites
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserId,
     TResult Function()? getFavouriteProducts,
     TResult Function(UniqueId productId)? setFavouriteProducts,
     TResult Function(UniqueId productId)? removeFavouriteProducts,
@@ -606,7 +462,6 @@ class _$_FavouritesEventRemoveFavourites
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FavouritesEventGetUserId value) getUserId,
     required TResult Function(_FavouritesEventGetFavourites value)
         getFavouriteProducts,
     required TResult Function(_FavouritesEventSetFavourites value)
@@ -620,7 +475,6 @@ class _$_FavouritesEventRemoveFavourites
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FavouritesEventGetUserId value)? getUserId,
     TResult? Function(_FavouritesEventGetFavourites value)?
         getFavouriteProducts,
     TResult? Function(_FavouritesEventSetFavourites value)?
@@ -634,7 +488,6 @@ class _$_FavouritesEventRemoveFavourites
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FavouritesEventGetUserId value)? getUserId,
     TResult Function(_FavouritesEventGetFavourites value)? getFavouriteProducts,
     TResult Function(_FavouritesEventSetFavourites value)? setFavouriteProducts,
     TResult Function(_FavouritesEventRemoveFavourites value)?

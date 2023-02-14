@@ -219,6 +219,7 @@ class AppRepo implements IAppRepo {
   @override
   Future<Either<AppFailure, List<Product>>> searchProduct(
       {required ProductValueObject serachData}) async {
+          log('search product **********');
     try {
       if (serachData.hasData()) {
         var data = await _firestore
@@ -265,6 +266,7 @@ class AppRepo implements IAppRepo {
       {required UniqueId appUserId,
       required UniqueId productId,
       required String collectionName}) async {
+          log('remove favourite products **********');
     try {
       print('calling');
       await _firestore
@@ -286,6 +288,7 @@ class AppRepo implements IAppRepo {
       {required UniqueId productId,
       required UniqueId userId,
       required CountValueObject quantity}) async {
+          log('change cart quantity **********');
     try {
       await _firestore
           .collection('User')
@@ -302,6 +305,7 @@ class AppRepo implements IAppRepo {
   @override
   Future<Either<AppFailure, List<Cart>>> getCartProduct(
       {required UniqueId userId}) async {
+          log('get cart product **********');
     try {
       final cartCollection = await _firestore
           .collection('User')
@@ -336,6 +340,7 @@ class AppRepo implements IAppRepo {
   @override
   Future<Either<AppFailure, Unit>> setCartProducts(
       {required UniqueId appUserId, required UniqueId productId}) async {
+          log('setcart product **********');
     try {
       await _firestore
           .collection('User')
@@ -356,6 +361,7 @@ class AppRepo implements IAppRepo {
   @override
   Future<Either<AppFailure, List<Cart>>> getOrderHistoryProduct(
       {required UniqueId userId}) async{
+          log('Get order history product **********');
    try{
       final cartCollection = await _firestore
           .collection('User')
@@ -391,6 +397,7 @@ class AppRepo implements IAppRepo {
   @override
   Future<Either<AppFailure, Unit>> moveCartProductsToOrderHistory(
       {required UniqueId appUserId}) async {
+        log('move cart product to history **********');
     try {
       WriteBatch writeBatch = _firestore.batch();
       final cartCollection = await _firestore

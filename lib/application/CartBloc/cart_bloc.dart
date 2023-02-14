@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:dartz/dartz.dart';
-
+import 'package:collection/collection.dart';
+import 'package:ecommerce/application/main_bloc/main_bloc.dart';
 import 'package:ecommerce/domain/Iauth/Iauth.dart';
 import 'package:ecommerce/domain/Iauth/user.dart';
 import 'package:ecommerce/domain/core/Failures/appFailure.dart';
@@ -22,27 +24,31 @@ part 'cart_bloc.freezed.dart';
 @injectable
 class CartBloc extends Bloc<CartEvent, CartState> {
   final IAppRepo _appRepo;
-  final Iauth _auth;
+  final MainBloc _mainBloc;
+late StreamSubscription userStatusSubscription;
+  CartBloc(this._appRepo,this._mainBloc) : super(CartState.initial()) {
+         emit(state.copyWith(isLoading: true));
+  userStatusSubscription =   _mainBloc.stream.listen((MainState _mainState) {
+      final result = _mainState.maybeMap(
+        orElse: () {
+          return CartState.initial();
+        },
+        loading: (value) {
+          return state.copyWith(isLoading: true);
+        },
+        authenticated: (value) {
+          return state.copyWith(isLoading: false, userId: value.appuser.id);
+        },
+        notAuthenticated: (value) {
+          return state.copyWith(isLoading: false);
+        },
+      );
+      emit(result);
+    });
 
-  CartBloc(this._appRepo, this._auth) : super(CartState.initial()) {
     on<CartEvent>((event, emit) async {
-      if (event is _CartEventGetUserId) {
-        emit(state.copyWith(isLoading: true));
-        await emit.forEach(
-          _auth.getSignedUser(),
-          onData: (Option<AppUser> data) {
-            return data.fold(
-                () => state.copyWith(
-                    isLoading: false,
-                    isError: true,
-                    optionSuccessFailure:
-                        Some(Left(AppFailure.insufficientPermissions()))),
-                (a) => state.copyWith(
-                    isLoading: false, userId: a.id, isError: false));
-          },
-        );
-      } else if (event is _CartEventGetCart) {
-        log('api called get cart');
+       if (event is _CartEventGetCart) {
+       
         if (state.userId.hasData()) {
           emit(state.copyWith(isLoading: true));
 
@@ -52,19 +58,35 @@ class CartBloc extends Bloc<CartEvent, CartState> {
                   optionSuccessFailure: Some(Left(l)),
                   isError: true,
                   isLoading: false),
-              (products) => state.copyWith(
+              (products) {
+                final amountInPaisa =  (products
+                        .map((e) =>
+                            e.product.price.getOrCrash() *
+                            e.quantity.getOrCrash())
+                        .toList()
+                        .sum*100).toInt();
+                  
+                 
+              return  state.copyWith(
                   optionSuccessFailure: const Some(Right(unit)),
                   cartProducts: products,
+                  totalPrice:CountValueObject(amountInPaisa),
                   isLoading: false,
-                  isError: false));
+                  isCartLoaded: true,
+                  isError: false);
+              });
           emit(out);
         } else {
+          log('no user id');
           emit(
             state.copyWith(
+              
                 optionSuccessFailure: Some(left(AppFailure.unexpected())),
+                isCartLoaded: true,
                 isError: true),
           );
         }
+
       }
       if (event is _CartEventSetCart) {
         if (state.userId.hasData()) {
@@ -157,9 +179,27 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           
         }
       }
-    }, transformer: sequential()
+    },  transformer: sequential() 
         /*  transformer:
             sequential() */ //for sequentially excuting two events , with the help of package called concurrency
         );
+  }
+  @override
+  Future<void> close() async{
+    // TODO: implement close
+    await userStatusSubscription.cancel();
+    return super.close();
+  }
+  @override
+  void onTransition(Transition<CartEvent, CartState> transition) {
+    // TODO: implement onTransition
+   // log(transition.event.toString());
+    super.onTransition(transition);
+  }
+  @override
+  void onChange(Change<CartState> change) {
+    // TODO: implement onChange
+   // log(change.toString());
+    super.onChange(change);
   }
 }

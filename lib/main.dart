@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:dartz/dartz.dart';
 import 'package:ecommerce/application/CartBloc/cart_bloc.dart';
 import 'package:ecommerce/application/EditUserBloc/edit_user_bloc.dart';
 import 'package:ecommerce/application/NotificationCubit/notication_cubit.dart';
@@ -13,6 +14,7 @@ import 'package:ecommerce/application/orderCubit/order_cubit.dart';
 import 'package:ecommerce/application/productBloc/product_bloc_bloc.dart';
 import 'package:ecommerce/core/colors.dart';
 import 'package:ecommerce/core/constants.dart';
+import 'package:ecommerce/domain/core/valueobject/valueobject.dart';
 import 'package:ecommerce/infrastructure/PaymentNotificationRepo/PaymentNotificationRepo.dart';
 import 'package:ecommerce/presentation/Widgets/loadingPage.dart';
 import 'package:ecommerce/presentation/launcherPage/launcherPage.dart';
@@ -48,28 +50,6 @@ Future<void> main() async {
   runApp(const MainApp());
 }
 
-/* lisners(){
-  print('Listners called');
-final streams =    FirebaseMessaging.onMessage.listen((msg) {
-print("_________________");
-final notification = msg.notification;
-final data = msg.notification!.android;
-if(notification !=null && data != null){
-  flutterLocalNotificationsPlugin.show(notification.hashCode, notification.title, notification.body, NotificationDetails(
-    android: AndroidNotificationDetails(channel.id, channel.name,channelDescription: channel.description,playSound: true,icon: '@mipmap/ic_launcher')
-  ));
-}
-   },);
-final st = FirebaseMessaging.onMessageOpenedApp.listen((msg) {
-  print("++++++++++++");
-final notification = msg.notification;
-final data = msg.notification!.android;
-if(notification !=null && data != null){
-  flutterLocalNotificationsPlugin.show(notification.hashCode, notification.title, notification.body, NotificationDetails(
-    android: AndroidNotificationDetails(channel.id, channel.name,channelDescription: channel.description,playSound: true,icon: '@mipmap/ic_launcher')
-  ));
-}
-},);} */
 class MainApp extends StatelessWidget {
   const MainApp({Key? key}) : super(key: key);
 
@@ -78,31 +58,25 @@ class MainApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<ProductWatcherBloc>()
-            ..add(const ProductWacherEvent.getAllProducts()),
-        ),
-         BlocProvider(
-          lazy: false,
-          create: (context) => getIt<OrderCubit>()
-            ..getSignedUserInfo(),
-        ),
-        BlocProvider(
+            lazy: false,
             create: ((context) => getIt<
                 MainBloc>() /* ..add(const MainEvent.onlinewatcher()) */)),
         BlocProvider(
+          create: (context) => getIt<ProductWatcherBloc>()
+            ..add(const ProductWacherEvent.getAllProducts()),
+        ),
+        BlocProvider( create: (context) => getIt<OrderCubit>(),lazy: false,),
+        BlocProvider(
+          lazy: false,
             create: (context) => getIt<FavouritesBloc>()
-              ..add(const FavouritesEvent.getUserId())
+              
               ..add(const FavouritesEvent.getFavouriteProducts())),
+        BlocProvider(create: (context) => getIt<CartBloc>(),lazy: false,),
         BlocProvider(
-            create: (context) => getIt<CartBloc>()
-              ..add(const CartEvent.getUserId())
-              ..add(const CartEvent.getCArtProducts())),
-        BlocProvider(
+          lazy: false,
             create: (context) => getIt<EditUserBloc>()
-              ..add(const EditUserEvent.getSignedUser())),
-        BlocProvider(
-            create: (context) => getIt<NoticationCubit>()
-              ),
+            ),
+        BlocProvider(create: (context) => getIt<NoticationCubit>()),
       ],
       child: MaterialApp(
           routes: {
@@ -114,7 +88,7 @@ class MainApp extends StatelessWidget {
             'onboarding': (context) => const LauncherPage(),
             'passwordreset': (context) => const PasswordResetScreen(),
             'editProfile': (context) => const EditProfile(),
-              'orderhistory': (context) => const OrderHistory(),
+            'orderhistory': (context) => const OrderHistory(),
           },
           theme: ThemeData(
             textTheme: GoogleFonts.ralewayTextTheme(),
@@ -127,13 +101,18 @@ class MainApp extends StatelessWidget {
           home: SafeArea(
               child: BlocListener<MainBloc, MainState>(
             listener: (context, state) {
+              log(state.toString()+"++++++++++");
               state.maybeMap(
                 orElse: () {},
                 notAuthenticated: (value) {
                   Navigator.of(context).pushReplacementNamed('onboarding');
+            
+            
                 },
                 authenticated: (value) {
                   Navigator.of(context).pushReplacementNamed('homePage');
+                 
+                
                 },
                 offline: (value) {
                   Navigator.of(context).pushReplacementNamed('noInternet');

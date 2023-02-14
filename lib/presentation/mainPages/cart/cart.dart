@@ -29,6 +29,14 @@ class Cart extends StatelessWidget {
   Widget build(BuildContext context) {
   
     //APP BAR ,  zLISTVIEW  ,FLOATING ACTION BUTTON
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    
+      if(context.read<CartBloc>().state.isCartLoaded == false){
+  log('widgets binding cart screen');
+        BlocProvider.of<CartBloc>(context).add(const CartEvent.getCArtProducts());
+      }
+
+    },);
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -40,8 +48,10 @@ class Cart extends StatelessWidget {
         listeners: [
           BlocListener<MainBloc, MainState>(
             listener: (context, state) {
+              log(state.toString()+'----------------');
               state.maybeMap(
                 orElse: () {},
+           
                 notAuthenticated: (value) {
                   Navigator.pushReplacementNamed(context, 'onboarding');
                 },
@@ -51,25 +61,7 @@ class Cart extends StatelessWidget {
               );
             },
           ),
-          BlocListener<CartBloc, CartState>(listener: (context, state) {
-            state.optionSuccessFailure.fold(
-                () => null,
-                (a) => a.fold(
-                    (l) => l.maybeMap(
-                          orElse: () =>
-                              ShowSnakBar.snakbar('Error occured', context),
-                          insufficientPermissions: (value) =>
-                              ShowSnakBar.snakbar(
-                                  'Insufficient permission', context),
-                          unableToUpdate: (value) =>
-                              ShowSnakBar.snakbar('Unable to update', context),
-                        ),
-                    (r)=>null));
-                    if(state.isProductsMovedtoHistory){
-                      Navigator.pushNamed(context, 'orderhistory');
-           log('naviii');
-                    }
-          }),
+         
           BlocListener<PaymentCubitCubit, PaymentCubitState>(
             listener: (context, state) {
               state.maybeMap(
@@ -88,7 +80,27 @@ class Cart extends StatelessWidget {
           ),
         
         ],
-        child: BlocBuilder<CartBloc, CartState>(
+        child: BlocConsumer<CartBloc, CartState>(
+          listener: (context, state) {
+         
+               state.optionSuccessFailure.fold(
+                () => null,
+                (a) => a.fold(
+                    (l) => l.maybeMap(
+                          orElse: () =>
+                              ShowSnakBar.snakbar('Error occured', context),
+                          insufficientPermissions: (value) =>
+                              ShowSnakBar.snakbar(
+                                  'Insufficient permission', context),
+                          unableToUpdate: (value) =>
+                              ShowSnakBar.snakbar('Unable to update', context),
+                        ),
+                    (r)=>null));
+                    if(state.isProductsMovedtoHistory){
+                      Navigator.pushNamed(context, 'orderhistory');
+           log('naviii');
+                    }
+          },
           builder: (context, state) {
             if (state.isLoading) {
               return const LoadingPage();
@@ -122,8 +134,12 @@ class Cart extends StatelessWidget {
                     context: context,
                     buttonName: 'Check out',
                     onTap: () {
+                   final totalPrice =  state.totalPrice.getOrCrash()*84;
+log(totalPrice.toString());
                       BlocProvider.of<PaymentCubitCubit>(context)
-                          .startPayment();  
+                          .startPayment(
+                            totalPrice.toInt().toString()
+                          );  
                             /*  BlocProvider.of<NoticationCubit>(context)
                           .sendMessageToken(); */
                         
@@ -132,13 +148,8 @@ class Cart extends StatelessWidget {
                               
                     },
                     BackgroundColor: appBackgroundColor,
-                    price: state.cartProducts
-                        .map((e) =>
-                            e.product.price.getOrCrash() *
-                            e.quantity.getOrCrash())
-                        .toList()
-                        .sum
-                        .toString()),
+                    price:(state.totalPrice.getOrCrash()/100).toString()
+                    ),
                 body: SafeArea(
                   child: SingleChildScrollView(
                     child: Column(
@@ -154,7 +165,7 @@ class Cart extends StatelessWidget {
                             context: context),
                         ListView.builder(
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           padding: const EdgeInsets.only(bottom: 125),
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(

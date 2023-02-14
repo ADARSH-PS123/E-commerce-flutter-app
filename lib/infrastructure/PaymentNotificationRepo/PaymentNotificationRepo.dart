@@ -57,11 +57,11 @@ class PaymentRepo implements IPaymentRepo {
   }
 
   @override
-  Future<Either<PaymentFailure, Unit>> initPaymentSheet() async {
+  Future<Either<PaymentFailure, Unit>> initPaymentSheet(String amountInPaisa) async {
    
     try {
       // 1. create payment intent on the server
-      final data = await createPaymentIntent('100', 'INR');
+      final data = await createPaymentIntent(amountInPaisa, 'INR');
 
       // 2. initialize the payment sheet
       await Stripe.instance.initPaymentSheet(
@@ -74,7 +74,6 @@ class PaymentRepo implements IPaymentRepo {
           customerId: data!['customer'],
           // Extra options
 
-          style: ThemeMode.dark,
         ),
       );
 
@@ -89,9 +88,10 @@ class PaymentRepo implements IPaymentRepo {
   createPaymentIntent(String amount, String currency) async {
     try {
       //Request body
+   
       Map<String, dynamic> body = {
         'amount': amount,
-        'currency': currency,
+        'currency':currency ,
         'payment_method_types[]': 'card',
         "description": "Software development services",
       };
@@ -112,6 +112,10 @@ class PaymentRepo implements IPaymentRepo {
       throw Exception(err.toString());
     }
   }
+
+
+
+ 
 
   @override
   Future<Either<AppFailure, Unit>> sendMessage() async {

@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CartEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserId,
     required TResult Function() getCArtProducts,
     required TResult Function(UniqueId productId) setCartProducts,
     required TResult Function(UniqueId productId) removeCart,
@@ -29,7 +28,6 @@ mixin _$CartEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserId,
     TResult? Function()? getCArtProducts,
     TResult? Function(UniqueId productId)? setCartProducts,
     TResult? Function(UniqueId productId)? removeCart,
@@ -40,7 +38,6 @@ mixin _$CartEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserId,
     TResult Function()? getCArtProducts,
     TResult Function(UniqueId productId)? setCartProducts,
     TResult Function(UniqueId productId)? removeCart,
@@ -52,7 +49,6 @@ mixin _$CartEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CartEventGetUserId value) getUserId,
     required TResult Function(_CartEventGetCart value) getCArtProducts,
     required TResult Function(_CartEventSetCart value) setCartProducts,
     required TResult Function(_CartEventRemoveCart value) removeCart,
@@ -64,7 +60,6 @@ mixin _$CartEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CartEventGetUserId value)? getUserId,
     TResult? Function(_CartEventGetCart value)? getCArtProducts,
     TResult? Function(_CartEventSetCart value)? setCartProducts,
     TResult? Function(_CartEventRemoveCart value)? removeCart,
@@ -75,7 +70,6 @@ mixin _$CartEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CartEventGetUserId value)? getUserId,
     TResult Function(_CartEventGetCart value)? getCArtProducts,
     TResult Function(_CartEventSetCart value)? setCartProducts,
     TResult Function(_CartEventRemoveCart value)? removeCart,
@@ -102,139 +96,6 @@ class _$CartEventCopyWithImpl<$Res, $Val extends CartEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_CartEventGetUserIdCopyWith<$Res> {
-  factory _$$_CartEventGetUserIdCopyWith(_$_CartEventGetUserId value,
-          $Res Function(_$_CartEventGetUserId) then) =
-      __$$_CartEventGetUserIdCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_CartEventGetUserIdCopyWithImpl<$Res>
-    extends _$CartEventCopyWithImpl<$Res, _$_CartEventGetUserId>
-    implements _$$_CartEventGetUserIdCopyWith<$Res> {
-  __$$_CartEventGetUserIdCopyWithImpl(
-      _$_CartEventGetUserId _value, $Res Function(_$_CartEventGetUserId) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_CartEventGetUserId implements _CartEventGetUserId {
-  const _$_CartEventGetUserId();
-
-  @override
-  String toString() {
-    return 'CartEvent.getUserId()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CartEventGetUserId);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getUserId,
-    required TResult Function() getCArtProducts,
-    required TResult Function(UniqueId productId) setCartProducts,
-    required TResult Function(UniqueId productId) removeCart,
-    required TResult Function(UniqueId productId, CountValueObject quantity)
-        changeQuantity,
-    required TResult Function() moveCartProdutToOrderHistory,
-  }) {
-    return getUserId();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserId,
-    TResult? Function()? getCArtProducts,
-    TResult? Function(UniqueId productId)? setCartProducts,
-    TResult? Function(UniqueId productId)? removeCart,
-    TResult? Function(UniqueId productId, CountValueObject quantity)?
-        changeQuantity,
-    TResult? Function()? moveCartProdutToOrderHistory,
-  }) {
-    return getUserId?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserId,
-    TResult Function()? getCArtProducts,
-    TResult Function(UniqueId productId)? setCartProducts,
-    TResult Function(UniqueId productId)? removeCart,
-    TResult Function(UniqueId productId, CountValueObject quantity)?
-        changeQuantity,
-    TResult Function()? moveCartProdutToOrderHistory,
-    required TResult orElse(),
-  }) {
-    if (getUserId != null) {
-      return getUserId();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_CartEventGetUserId value) getUserId,
-    required TResult Function(_CartEventGetCart value) getCArtProducts,
-    required TResult Function(_CartEventSetCart value) setCartProducts,
-    required TResult Function(_CartEventRemoveCart value) removeCart,
-    required TResult Function(_CartEventCahngeQuantityCart value)
-        changeQuantity,
-    required TResult Function(_CartEventmoveCartProdutToOrderHistory value)
-        moveCartProdutToOrderHistory,
-  }) {
-    return getUserId(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CartEventGetUserId value)? getUserId,
-    TResult? Function(_CartEventGetCart value)? getCArtProducts,
-    TResult? Function(_CartEventSetCart value)? setCartProducts,
-    TResult? Function(_CartEventRemoveCart value)? removeCart,
-    TResult? Function(_CartEventCahngeQuantityCart value)? changeQuantity,
-    TResult? Function(_CartEventmoveCartProdutToOrderHistory value)?
-        moveCartProdutToOrderHistory,
-  }) {
-    return getUserId?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CartEventGetUserId value)? getUserId,
-    TResult Function(_CartEventGetCart value)? getCArtProducts,
-    TResult Function(_CartEventSetCart value)? setCartProducts,
-    TResult Function(_CartEventRemoveCart value)? removeCart,
-    TResult Function(_CartEventCahngeQuantityCart value)? changeQuantity,
-    TResult Function(_CartEventmoveCartProdutToOrderHistory value)?
-        moveCartProdutToOrderHistory,
-    required TResult orElse(),
-  }) {
-    if (getUserId != null) {
-      return getUserId(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _CartEventGetUserId implements CartEvent {
-  const factory _CartEventGetUserId() = _$_CartEventGetUserId;
 }
 
 /// @nodoc
@@ -275,7 +136,6 @@ class _$_CartEventGetCart implements _CartEventGetCart {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserId,
     required TResult Function() getCArtProducts,
     required TResult Function(UniqueId productId) setCartProducts,
     required TResult Function(UniqueId productId) removeCart,
@@ -289,7 +149,6 @@ class _$_CartEventGetCart implements _CartEventGetCart {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserId,
     TResult? Function()? getCArtProducts,
     TResult? Function(UniqueId productId)? setCartProducts,
     TResult? Function(UniqueId productId)? removeCart,
@@ -303,7 +162,6 @@ class _$_CartEventGetCart implements _CartEventGetCart {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserId,
     TResult Function()? getCArtProducts,
     TResult Function(UniqueId productId)? setCartProducts,
     TResult Function(UniqueId productId)? removeCart,
@@ -321,7 +179,6 @@ class _$_CartEventGetCart implements _CartEventGetCart {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CartEventGetUserId value) getUserId,
     required TResult Function(_CartEventGetCart value) getCArtProducts,
     required TResult Function(_CartEventSetCart value) setCartProducts,
     required TResult Function(_CartEventRemoveCart value) removeCart,
@@ -336,7 +193,6 @@ class _$_CartEventGetCart implements _CartEventGetCart {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CartEventGetUserId value)? getUserId,
     TResult? Function(_CartEventGetCart value)? getCArtProducts,
     TResult? Function(_CartEventSetCart value)? setCartProducts,
     TResult? Function(_CartEventRemoveCart value)? removeCart,
@@ -350,7 +206,6 @@ class _$_CartEventGetCart implements _CartEventGetCart {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CartEventGetUserId value)? getUserId,
     TResult Function(_CartEventGetCart value)? getCArtProducts,
     TResult Function(_CartEventSetCart value)? setCartProducts,
     TResult Function(_CartEventRemoveCart value)? removeCart,
@@ -435,7 +290,6 @@ class _$_CartEventSetCart implements _CartEventSetCart {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserId,
     required TResult Function() getCArtProducts,
     required TResult Function(UniqueId productId) setCartProducts,
     required TResult Function(UniqueId productId) removeCart,
@@ -449,7 +303,6 @@ class _$_CartEventSetCart implements _CartEventSetCart {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserId,
     TResult? Function()? getCArtProducts,
     TResult? Function(UniqueId productId)? setCartProducts,
     TResult? Function(UniqueId productId)? removeCart,
@@ -463,7 +316,6 @@ class _$_CartEventSetCart implements _CartEventSetCart {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserId,
     TResult Function()? getCArtProducts,
     TResult Function(UniqueId productId)? setCartProducts,
     TResult Function(UniqueId productId)? removeCart,
@@ -481,7 +333,6 @@ class _$_CartEventSetCart implements _CartEventSetCart {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CartEventGetUserId value) getUserId,
     required TResult Function(_CartEventGetCart value) getCArtProducts,
     required TResult Function(_CartEventSetCart value) setCartProducts,
     required TResult Function(_CartEventRemoveCart value) removeCart,
@@ -496,7 +347,6 @@ class _$_CartEventSetCart implements _CartEventSetCart {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CartEventGetUserId value)? getUserId,
     TResult? Function(_CartEventGetCart value)? getCArtProducts,
     TResult? Function(_CartEventSetCart value)? setCartProducts,
     TResult? Function(_CartEventRemoveCart value)? removeCart,
@@ -510,7 +360,6 @@ class _$_CartEventSetCart implements _CartEventSetCart {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CartEventGetUserId value)? getUserId,
     TResult Function(_CartEventGetCart value)? getCArtProducts,
     TResult Function(_CartEventSetCart value)? setCartProducts,
     TResult Function(_CartEventRemoveCart value)? removeCart,
@@ -602,7 +451,6 @@ class _$_CartEventRemoveCart implements _CartEventRemoveCart {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserId,
     required TResult Function() getCArtProducts,
     required TResult Function(UniqueId productId) setCartProducts,
     required TResult Function(UniqueId productId) removeCart,
@@ -616,7 +464,6 @@ class _$_CartEventRemoveCart implements _CartEventRemoveCart {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserId,
     TResult? Function()? getCArtProducts,
     TResult? Function(UniqueId productId)? setCartProducts,
     TResult? Function(UniqueId productId)? removeCart,
@@ -630,7 +477,6 @@ class _$_CartEventRemoveCart implements _CartEventRemoveCart {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserId,
     TResult Function()? getCArtProducts,
     TResult Function(UniqueId productId)? setCartProducts,
     TResult Function(UniqueId productId)? removeCart,
@@ -648,7 +494,6 @@ class _$_CartEventRemoveCart implements _CartEventRemoveCart {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CartEventGetUserId value) getUserId,
     required TResult Function(_CartEventGetCart value) getCArtProducts,
     required TResult Function(_CartEventSetCart value) setCartProducts,
     required TResult Function(_CartEventRemoveCart value) removeCart,
@@ -663,7 +508,6 @@ class _$_CartEventRemoveCart implements _CartEventRemoveCart {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CartEventGetUserId value)? getUserId,
     TResult? Function(_CartEventGetCart value)? getCArtProducts,
     TResult? Function(_CartEventSetCart value)? setCartProducts,
     TResult? Function(_CartEventRemoveCart value)? removeCart,
@@ -677,7 +521,6 @@ class _$_CartEventRemoveCart implements _CartEventRemoveCart {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CartEventGetUserId value)? getUserId,
     TResult Function(_CartEventGetCart value)? getCArtProducts,
     TResult Function(_CartEventSetCart value)? setCartProducts,
     TResult Function(_CartEventRemoveCart value)? removeCart,
@@ -780,7 +623,6 @@ class _$_CartEventCahngeQuantityCart implements _CartEventCahngeQuantityCart {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserId,
     required TResult Function() getCArtProducts,
     required TResult Function(UniqueId productId) setCartProducts,
     required TResult Function(UniqueId productId) removeCart,
@@ -794,7 +636,6 @@ class _$_CartEventCahngeQuantityCart implements _CartEventCahngeQuantityCart {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserId,
     TResult? Function()? getCArtProducts,
     TResult? Function(UniqueId productId)? setCartProducts,
     TResult? Function(UniqueId productId)? removeCart,
@@ -808,7 +649,6 @@ class _$_CartEventCahngeQuantityCart implements _CartEventCahngeQuantityCart {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserId,
     TResult Function()? getCArtProducts,
     TResult Function(UniqueId productId)? setCartProducts,
     TResult Function(UniqueId productId)? removeCart,
@@ -826,7 +666,6 @@ class _$_CartEventCahngeQuantityCart implements _CartEventCahngeQuantityCart {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CartEventGetUserId value) getUserId,
     required TResult Function(_CartEventGetCart value) getCArtProducts,
     required TResult Function(_CartEventSetCart value) setCartProducts,
     required TResult Function(_CartEventRemoveCart value) removeCart,
@@ -841,7 +680,6 @@ class _$_CartEventCahngeQuantityCart implements _CartEventCahngeQuantityCart {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CartEventGetUserId value)? getUserId,
     TResult? Function(_CartEventGetCart value)? getCArtProducts,
     TResult? Function(_CartEventSetCart value)? setCartProducts,
     TResult? Function(_CartEventRemoveCart value)? removeCart,
@@ -855,7 +693,6 @@ class _$_CartEventCahngeQuantityCart implements _CartEventCahngeQuantityCart {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CartEventGetUserId value)? getUserId,
     TResult Function(_CartEventGetCart value)? getCArtProducts,
     TResult Function(_CartEventSetCart value)? setCartProducts,
     TResult Function(_CartEventRemoveCart value)? removeCart,
@@ -926,7 +763,6 @@ class _$_CartEventmoveCartProdutToOrderHistory
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserId,
     required TResult Function() getCArtProducts,
     required TResult Function(UniqueId productId) setCartProducts,
     required TResult Function(UniqueId productId) removeCart,
@@ -940,7 +776,6 @@ class _$_CartEventmoveCartProdutToOrderHistory
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserId,
     TResult? Function()? getCArtProducts,
     TResult? Function(UniqueId productId)? setCartProducts,
     TResult? Function(UniqueId productId)? removeCart,
@@ -954,7 +789,6 @@ class _$_CartEventmoveCartProdutToOrderHistory
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserId,
     TResult Function()? getCArtProducts,
     TResult Function(UniqueId productId)? setCartProducts,
     TResult Function(UniqueId productId)? removeCart,
@@ -972,7 +806,6 @@ class _$_CartEventmoveCartProdutToOrderHistory
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CartEventGetUserId value) getUserId,
     required TResult Function(_CartEventGetCart value) getCArtProducts,
     required TResult Function(_CartEventSetCart value) setCartProducts,
     required TResult Function(_CartEventRemoveCart value) removeCart,
@@ -987,7 +820,6 @@ class _$_CartEventmoveCartProdutToOrderHistory
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CartEventGetUserId value)? getUserId,
     TResult? Function(_CartEventGetCart value)? getCArtProducts,
     TResult? Function(_CartEventSetCart value)? setCartProducts,
     TResult? Function(_CartEventRemoveCart value)? removeCart,
@@ -1001,7 +833,6 @@ class _$_CartEventmoveCartProdutToOrderHistory
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CartEventGetUserId value)? getUserId,
     TResult Function(_CartEventGetCart value)? getCArtProducts,
     TResult Function(_CartEventSetCart value)? setCartProducts,
     TResult Function(_CartEventRemoveCart value)? removeCart,
@@ -1028,8 +859,10 @@ mixin _$CartState {
   UniqueId get userId => throw _privateConstructorUsedError;
   bool get miniLoading => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  CountValueObject get totalPrice => throw _privateConstructorUsedError;
   bool get isProductsMovedtoHistory => throw _privateConstructorUsedError;
   CountValueObject get quantity => throw _privateConstructorUsedError;
+  bool get isCartLoaded => throw _privateConstructorUsedError;
   Option<Either<AppFailure, Unit>> get optionSuccessFailure =>
       throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
@@ -1049,8 +882,10 @@ abstract class $CartStateCopyWith<$Res> {
       UniqueId userId,
       bool miniLoading,
       bool isLoading,
+      CountValueObject totalPrice,
       bool isProductsMovedtoHistory,
       CountValueObject quantity,
+      bool isCartLoaded,
       Option<Either<AppFailure, Unit>> optionSuccessFailure,
       bool isError});
 }
@@ -1072,8 +907,10 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
     Object? userId = null,
     Object? miniLoading = null,
     Object? isLoading = null,
+    Object? totalPrice = null,
     Object? isProductsMovedtoHistory = null,
     Object? quantity = null,
+    Object? isCartLoaded = null,
     Object? optionSuccessFailure = null,
     Object? isError = null,
   }) {
@@ -1094,6 +931,10 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      totalPrice: null == totalPrice
+          ? _value.totalPrice
+          : totalPrice // ignore: cast_nullable_to_non_nullable
+              as CountValueObject,
       isProductsMovedtoHistory: null == isProductsMovedtoHistory
           ? _value.isProductsMovedtoHistory
           : isProductsMovedtoHistory // ignore: cast_nullable_to_non_nullable
@@ -1102,6 +943,10 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as CountValueObject,
+      isCartLoaded: null == isCartLoaded
+          ? _value.isCartLoaded
+          : isCartLoaded // ignore: cast_nullable_to_non_nullable
+              as bool,
       optionSuccessFailure: null == optionSuccessFailure
           ? _value.optionSuccessFailure
           : optionSuccessFailure // ignore: cast_nullable_to_non_nullable
@@ -1126,8 +971,10 @@ abstract class _$$_CartStateCopyWith<$Res> implements $CartStateCopyWith<$Res> {
       UniqueId userId,
       bool miniLoading,
       bool isLoading,
+      CountValueObject totalPrice,
       bool isProductsMovedtoHistory,
       CountValueObject quantity,
+      bool isCartLoaded,
       Option<Either<AppFailure, Unit>> optionSuccessFailure,
       bool isError});
 }
@@ -1147,8 +994,10 @@ class __$$_CartStateCopyWithImpl<$Res>
     Object? userId = null,
     Object? miniLoading = null,
     Object? isLoading = null,
+    Object? totalPrice = null,
     Object? isProductsMovedtoHistory = null,
     Object? quantity = null,
+    Object? isCartLoaded = null,
     Object? optionSuccessFailure = null,
     Object? isError = null,
   }) {
@@ -1169,6 +1018,10 @@ class __$$_CartStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      totalPrice: null == totalPrice
+          ? _value.totalPrice
+          : totalPrice // ignore: cast_nullable_to_non_nullable
+              as CountValueObject,
       isProductsMovedtoHistory: null == isProductsMovedtoHistory
           ? _value.isProductsMovedtoHistory
           : isProductsMovedtoHistory // ignore: cast_nullable_to_non_nullable
@@ -1177,6 +1030,10 @@ class __$$_CartStateCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as CountValueObject,
+      isCartLoaded: null == isCartLoaded
+          ? _value.isCartLoaded
+          : isCartLoaded // ignore: cast_nullable_to_non_nullable
+              as bool,
       optionSuccessFailure: null == optionSuccessFailure
           ? _value.optionSuccessFailure
           : optionSuccessFailure // ignore: cast_nullable_to_non_nullable
@@ -1197,8 +1054,10 @@ class _$_CartState implements _CartState {
       required this.userId,
       required this.miniLoading,
       required this.isLoading,
+      required this.totalPrice,
       required this.isProductsMovedtoHistory,
       required this.quantity,
+      required this.isCartLoaded,
       required this.optionSuccessFailure,
       required this.isError})
       : _cartProducts = cartProducts;
@@ -1218,9 +1077,13 @@ class _$_CartState implements _CartState {
   @override
   final bool isLoading;
   @override
+  final CountValueObject totalPrice;
+  @override
   final bool isProductsMovedtoHistory;
   @override
   final CountValueObject quantity;
+  @override
+  final bool isCartLoaded;
   @override
   final Option<Either<AppFailure, Unit>> optionSuccessFailure;
   @override
@@ -1228,7 +1091,7 @@ class _$_CartState implements _CartState {
 
   @override
   String toString() {
-    return 'CartState(cartProducts: $cartProducts, userId: $userId, miniLoading: $miniLoading, isLoading: $isLoading, isProductsMovedtoHistory: $isProductsMovedtoHistory, quantity: $quantity, optionSuccessFailure: $optionSuccessFailure, isError: $isError)';
+    return 'CartState(cartProducts: $cartProducts, userId: $userId, miniLoading: $miniLoading, isLoading: $isLoading, totalPrice: $totalPrice, isProductsMovedtoHistory: $isProductsMovedtoHistory, quantity: $quantity, isCartLoaded: $isCartLoaded, optionSuccessFailure: $optionSuccessFailure, isError: $isError)';
   }
 
   @override
@@ -1243,11 +1106,15 @@ class _$_CartState implements _CartState {
                 other.miniLoading == miniLoading) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.totalPrice, totalPrice) ||
+                other.totalPrice == totalPrice) &&
             (identical(
                     other.isProductsMovedtoHistory, isProductsMovedtoHistory) ||
                 other.isProductsMovedtoHistory == isProductsMovedtoHistory) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
+            (identical(other.isCartLoaded, isCartLoaded) ||
+                other.isCartLoaded == isCartLoaded) &&
             (identical(other.optionSuccessFailure, optionSuccessFailure) ||
                 other.optionSuccessFailure == optionSuccessFailure) &&
             (identical(other.isError, isError) || other.isError == isError));
@@ -1260,8 +1127,10 @@ class _$_CartState implements _CartState {
       userId,
       miniLoading,
       isLoading,
+      totalPrice,
       isProductsMovedtoHistory,
       quantity,
+      isCartLoaded,
       optionSuccessFailure,
       isError);
 
@@ -1278,8 +1147,10 @@ abstract class _CartState implements CartState {
       required final UniqueId userId,
       required final bool miniLoading,
       required final bool isLoading,
+      required final CountValueObject totalPrice,
       required final bool isProductsMovedtoHistory,
       required final CountValueObject quantity,
+      required final bool isCartLoaded,
       required final Option<Either<AppFailure, Unit>> optionSuccessFailure,
       required final bool isError}) = _$_CartState;
 
@@ -1292,9 +1163,13 @@ abstract class _CartState implements CartState {
   @override
   bool get isLoading;
   @override
+  CountValueObject get totalPrice;
+  @override
   bool get isProductsMovedtoHistory;
   @override
   CountValueObject get quantity;
+  @override
+  bool get isCartLoaded;
   @override
   Option<Either<AppFailure, Unit>> get optionSuccessFailure;
   @override

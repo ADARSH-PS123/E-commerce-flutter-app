@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce/application/main_bloc/main_bloc.dart';
 import 'package:ecommerce/domain/Iauth/Iauth.dart';
 import 'package:ecommerce/domain/core/Failures/appFailure.dart';
 import 'package:ecommerce/domain/core/valueobject/valueobject.dart';
@@ -19,11 +20,33 @@ part 'order_cubit.freezed.dart';
 @injectable
 class OrderCubit extends Cubit<OrderState> {
   final IAppRepo _appRepo;
-  final Iauth _iauth;
-  late StreamSubscription userStatusSubscription;
-  OrderCubit(this._appRepo, this._iauth) : super(OrderState.initial());
 
-  void getSignedUserInfo() {
+  final MainBloc _mainBloc;
+
+  late StreamSubscription userStatusSubscription;
+  OrderCubit(this._appRepo, this._mainBloc)
+      : super(OrderState.initial()) {
+        emit(state.copyWith(isLoading: true));
+  userStatusSubscription =   _mainBloc.stream.listen((MainState _mainState) {
+      final result = _mainState.maybeMap(
+        orElse: () {
+          return OrderState.initial();
+        },
+        loading: (value) {
+          return state.copyWith(isLoading: true);
+        },
+        authenticated: (value) {
+          return state.copyWith(isLoading: false, userId: value.appuser.id);
+        },
+        notAuthenticated: (value) {
+          return state.copyWith(isLoading: false);
+        },
+      );
+      emit(result);
+    });
+  }
+
+/*   void getSignedUserInfo() {
     log('get signedUserInfo ');
     emit(state.copyWith(isLoading: true));
     userStatusSubscription = _iauth.getSignedUser().listen((option) {
@@ -32,47 +55,46 @@ class OrderCubit extends Cubit<OrderState> {
               userId: UniqueId.fromBackend(''), isLoading: false)),
           (user) => emit(state.copyWith(userId: user.id, isLoading: false)));
     });
-  }
-  getOrderHistoryProduct()async{
-    log('api called');
-        if (state.userId.hasData()) {
-            emit(state.copyWith(isLoading: true));
+  } */
+  getOrderHistoryProduct() async {
 
-            final result = await _appRepo.getOrderHistoryProduct(userId: state.userId);
-            final out = result.fold(
-                (l) => state.copyWith(
-                    optionSuccessFailure: Some(Left(l)),
-                    isError: true,
-                    isLoaded: true,
-                    isLoading: false),
-                (prod) => state.copyWith(
-                    optionSuccessFailure: const Some(Right(unit)),
-                    cartProducts: prod,
-                    isLoading: false,
-                    isLoaded: true,//avoid api firebase call when widget is being rebuild
-                    isError: false));
-            emit(out);
-          } 
-       
-          else  {
-     
-            emit(
-              state.copyWith(
-                  optionSuccessFailure: Some(left(AppFailure.unexpected())),
-                  isError: true),
-            );
-          }
+    if (state.userId.hasData()) {
+      emit(state.copyWith(isLoading: true));
+
+      final result =
+          await _appRepo.getOrderHistoryProduct(userId: state.userId);
+      final out = result.fold(
+          (l) => state.copyWith(
+              optionSuccessFailure: Some(Left(l)),
+              isError: true,
+              isLoaded: true,
+              isLoading: false),
+          (prod) => state.copyWith(
+              optionSuccessFailure: const Some(Right(unit)),
+              cartProducts: prod,
+              isLoading: false,
+              isLoaded:
+                  true, //avoid api firebase call when widget is being rebuild
+              isError: false));
+      emit(out);
+    } else {
+      emit(
+        state.copyWith(
+            optionSuccessFailure: Some(left(AppFailure.unexpected())),
+            isError: true),
+      );
+    }
   }
 
- 
   @override
-  Future<void> close() {
-    userStatusSubscription.cancel();
+  Future<void> close() async{
+  await  userStatusSubscription.cancel();
     return super.close();
   }
+
   @override
   void onChange(Change<OrderState> change) {
-  //log(change.toString());
+   // log(change.toString());
     super.onChange(change);
   }
 }
