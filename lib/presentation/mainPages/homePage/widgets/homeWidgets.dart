@@ -1,3 +1,4 @@
+import 'package:ecommerce/application/productBloc/product_bloc_bloc.dart';
 import 'package:ecommerce/core/colors.dart';
 import 'package:ecommerce/presentation/responsive.dart';
 import 'package:flutter/material.dart';
@@ -6,13 +7,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 PreferredSize homeAppBar(
   BuildContext context,
   GlobalKey<ScaffoldState> _scaffoldKey,
- 
   void Function(String)? onChanged,
 ) {
   return PreferredSize(
-    preferredSize: 
-         const Size.fromHeight(100),
-        
+    preferredSize: const Size.fromHeight(100),
     child: Padding(
       padding: Responsive.isMobile(context)
           ? const EdgeInsets.symmetric(vertical: 20, horizontal: 30)
@@ -32,9 +30,14 @@ PreferredSize homeAppBar(
         ),
         title: SizedBox(
           height: 55,
-          width: Responsive.isMobile(context)?double.infinity:300,
+          width: Responsive.isMobile(context) ? double.infinity : 300,
           child: TextFormField(
             onChanged: onChanged,
+            initialValue: context
+                .read<ProductWatcherBloc>()
+                .state
+                .searchData
+                .getOrElse(''),
             decoration: InputDecoration(
                 hintText: "Search",
                 hintStyle: const TextStyle(color: greyColor),
